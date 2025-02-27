@@ -191,7 +191,7 @@ install_documentation_website: check_user_root
 	@echo ""
 	$(call are_you_sure)
 	@echo ""
-	@if [ -d $(webserver_dir)/ricgraph-documentation ]; then mv -f $(webserver_dir)/ricgraph-documentation $(webserver_dir)/ricgraph-documentation-old ; fi
+	@if [ -d $(webserver_dir)/ricgraph-documentation ]; then rm -rf $(webserver_dir)/ricgraph-documentation-old; mv -f $(webserver_dir)/ricgraph-documentation $(webserver_dir)/ricgraph-documentation-old ; fi
 	cd $(webserver_dir); \
 	bash -c "wget $(ricgraph_doc_path)"; \
 	cd $(webserver_dir); \
