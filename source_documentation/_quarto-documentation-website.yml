@@ -101,7 +101,6 @@ website:
           ![GitHub last commit](https://img.shields.io/github/last-commit/UtrechtUniversity/ricgraph?color=%234c1)
           [![PyPI version](https://img.shields.io/pypi/v/ricgraph?label=PyPI%20version&color=%234c1)](https://pypi.org/project/ricgraph)
           [![PyPI downloads](https://img.shields.io/pypi/dm/ricgraph?label=PyPI%20downloads&color=%234c1)](https://pypistats.org/packages/ricgraph)
-          [![GitHub license](https://img.shields.io/github/license/UtrechtUniversity/ricgraph?color=%234c1)](LICENSE)
   page-footer: 
     background: primary
     left:
