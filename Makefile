@@ -43,8 +43,8 @@ endif
 # 'ricgraph_dir' should be done differently. It is relative to the directory
 # of this Makefile.
 ricgraph_dir := ../ricgraph
-# The '-{0..10}' is to create multiple filenames when tarring.
-ricgraph_doc_file := ricgraph_documentation-v$(ricgraph_version)-{0..10}.tar.gz
+# The '-{0..5}' is to create multiple filenames when tarring.
+ricgraph_doc_file := ricgraph_documentation-v$(ricgraph_version)-{0..5}.tar
 ricgraph_doc_download := https://github.com/UtrechtUniversity/ricgraph-documentation
 distrib_file := $(distrib_dir)/$(ricgraph_doc_file)
 ricgraph_doc_path := $(ricgraph_doc_download)/tree/main/$(distrib_file)
@@ -194,7 +194,7 @@ install_documentation_website: check_user_root
 	@if [ -d $(webserver_dir)/ricgraph-documentation ]; then mv -f $(webserver_dir)/ricgraph-documentation $(webserver_dir)/ricgraph-documentation-old ; fi
 	cd $(webserver_dir); \
 	wget $(ricgraph_doc_path); \
-	if [ ! -f $(ricgraph_doc_file) ]; then echo "Error, something went wrong downloading file '$(ricgraph_doc_file)'."; exit 1; fi
+	@#if [ ! -f $(ricgraph_doc_file) ]; then echo "Error, something went wrong downloading file '$(ricgraph_doc_file)'."; exit 1; fi
 	cd $(webserver_dir); \
 	mkdir ricgraph-documentation; \
 	cd ricgraph-documentation; \
