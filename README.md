@@ -36,7 +36,7 @@ make [target]
 In the example above, the *[target]* specifies what has to be done.
 Assuming that you are in your home directory, you can
 execute one of these commands to find the possible targets
-(and subsequently find the command to build the documentation targets above):
+(and subsequently find the commands to build the documentation targets above):
 ```
 make
 make help
