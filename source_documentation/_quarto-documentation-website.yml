@@ -1,0 +1,153 @@
+# ########################################################################
+#
+# Documentation Ricgraph - Research in context graph
+#
+# ########################################################################
+#
+# MIT License
+# Copyright (c) 2025 Rik D.T. Janssen
+#
+# ########################################################################
+#
+# This file is the Quarto config file to generate the Ricgraph
+# documentation website.
+#
+# Original version Rik D.T. Janssen, February 2025.
+#
+# ########################################################################
+
+project:
+  output-dir: ../build_documentation
+  type: website
+  render:
+    # The first here will be referred to in 'index.html'.
+    - docs/ricgraph_tutorial.md
+    - "docs/*.md"
+    - "README.md"
+  
+website:
+  title: "Documentation Ricgraph - Research in context graph"
+  description: "This website is the documentation for Ricgraph - Research in context graph"
+  favicon: docs/images/favicon.ico
+  search: true
+  sidebar:
+    border: false
+    title: "Research in context graph Documentation"
+    style: docked
+    logo: docs/images/ricgraph_logo.png
+    logo-alt: "Ricgraph logo"
+    search: true
+    background: primary
+    collapse-level: 1
+    contents:
+      - text: "Tutorial Ricgraph"
+        href: docs/ricgraph_tutorial.md
+      - text: "Readme Ricgraph"
+        href: README.md
+      - section: "Installation and harvesting"
+        contents:
+          - href: docs/ricgraph_install_configure.md
+          - href: docs/ricgraph_harvest_scripts.md
+      - text: "Exploring Ricgraph"
+        href: docs/ricgraph_explorer.md
+      - section: "Outreach"
+        contents:
+          - text: Publications, presentations, and more
+            href: docs/ricgraph_pubs_pres_news_use_ment.md
+          - text: Videos
+            href: docs/ricgraph_example_use_videos.md
+      - section: "More options"
+        contents:
+          - section: "Installation options"
+            contents:
+              - href: docs/ricgraph_containerized.md
+              - href: docs/ricgraph_as_server.md
+          - section: "Graph database backends"
+            contents:
+              - text: "Ricgraph with Neo4j"
+                href: docs/ricgraph_backend_neo4j.md
+              - text: "Ricgraph with Memgraph"
+                href: docs/ricgraph_backend_memgraph.md
+          - section: "Ricgraph REST API"
+            contents:
+              - text: "REST API information"
+                href: docs/ricgraph_restapi.md
+              - text: "REST API endpoint documentation"
+                href: docs/ricgraph_restapi_gendoc.md
+          - href: docs/ricgraph_details.md
+          - href: docs/ricgraph_misc_scripts.md
+          - href: docs/ricgraph_script_writing.md
+          - text: "Compare Ricgraph to others"
+            href: docs/ricgraph_comparison.md
+          - text: "Known bugs"
+            href: docs/ricgraph_known_bugs.md
+      - text: "Table of contents"
+        href: docs/ricgraph_toc_documentation.md
+      - text: "Index"
+        href: docs/ricgraph_index_documentation.md
+      - text: "Tutorial pdf"
+        href: ricgraph_tutorial.pdf
+      - text: "Full documentation pdf"
+        href: ricgraph_fulldocumentation.pdf
+    footer: >
+          [![DOI software](https://img.shields.io/badge/DOI%20software-10.5281/zenodo.7524314-blue)](https://doi.org/10.5281/zenodo.7524314)
+          [![DOI reference publication](https://img.shields.io/badge/DOI%20publication-10.1016%2Fj.softx.2024.101736-blue)](https://doi.org/10.1016/j.softx.2024.101736)
+          [![website](https://img.shields.io/badge/website-www.ricgraph.eu-blue)](https://www.ricgraph.eu)
+          [![documentation website](https://img.shields.io/badge/doc%20website-documentation.ricgraph.eu-blue)](https://documentation.ricgraph.eu)
+          [![GitHub Ricgraph](https://img.shields.io/badge/GitHub-UtrechtUniversity/ricgraph-blue)](https://github.com/UtrechtUniversity/ricgraph)
+          ![GitHub release date](https://img.shields.io/github/release-date/UtrechtUniversity/ricgraph?color=%234c1)
+          [![GitHub latest release](https://img.shields.io/github/release/UtrechtUniversity/ricgraph?color=%234c1)](https://github.com/UtrechtUniversity/ricgraph/releases)
+          ![GitHub commits since latest release](https://img.shields.io/github/commits-since/UtrechtUniversity/ricgraph/latest?color=%234c1)
+          ![GitHub last commit](https://img.shields.io/github/last-commit/UtrechtUniversity/ricgraph?color=%234c1)
+          [![PyPI version](https://img.shields.io/pypi/v/ricgraph?label=PyPI%20version&color=%234c1)](https://pypi.org/project/ricgraph)
+          [![PyPI downloads](https://img.shields.io/pypi/dm/ricgraph?label=PyPI%20downloads&color=%234c1)](https://pypistats.org/packages/ricgraph)
+          [![GitHub license](https://img.shields.io/github/license/UtrechtUniversity/ricgraph?color=%234c1)](LICENSE)
+  page-footer: 
+    background: primary
+    left:
+      # Do not change '#XX.YY#' below, it will be modified by the Makefile.
+      - text: >
+          This is documentation for version #XX.YY# of Ricgraph - Research 
+          in context graph.
+          For more information about Ricgraph, Ricgraph Explorer, and the
+          Ricgraph REST API, please read the reference publication 
+          <a href="https://doi.org/10.1016/j.softx.2024.101736">
+          https://doi.org/10.1016/j.softx.2024.101736</a>, visit the website 
+          <a href=https://www.ricgraph.eu>www.ricgraph.eu</a>, 
+          or go to the GitHub
+          repository <a href=https://github.com/UtrechtUniversity/ricgraph>
+          https://github.com/UtrechtUniversity/ricgraph</a>. 
+
+format:
+  html:
+    grid:
+      sidebar-width: 350px
+    theme: 
+      - cosmo
+      - ricgraph.scss
+    mainfont: "Open Sans"
+    toc: true
+    lightbox: true
+    filters:
+      - convert_scripts/fix_mdtohtml_links.lua
+
+keywords:
+  - "Research in context graph"
+  - "Ricgraph"
+  - "Ricgraph Explorer"
+  - "Ricgraph REST API"
+  - "Data enrichment"
+  - "Data harvesting"
+  - "Data linking"
+  - "Enrichment"
+  - "Graph"
+  - "Graph database"
+  - "Harvest"
+  - "Harvest data"
+  - "Harvester"
+  - "Knowledge graph"
+  - "Linked data"
+  - "Metadata"
+  - "Utrecht University"
+  - "Visualization"
+

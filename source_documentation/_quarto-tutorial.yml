@@ -1,0 +1,95 @@
+# ########################################################################
+#
+# Documentation Ricgraph - Research in context graph
+#
+# ########################################################################
+#
+# MIT License
+# Copyright (c) 2025 Rik D.T. Janssen
+#
+# ########################################################################
+#
+# This file is the Quarto config file to generate the tutorial Ricgraph
+# documentation.
+#
+# Original version Rik D.T. Janssen, February 2025.
+#
+# ########################################################################
+
+project:
+  output-dir: ../build_documentation
+  type: book
+
+book:
+  title: "Tutorial Ricgraph - Research in context graph"
+  author: "Rik D.T. Janssen, Utrecht University, ORCID 0000-0001-9510-0802"
+  chapters:
+    - index.md
+
+format:
+  pdf:
+    documentclass: scrreprt
+    papersize: a4
+    fig-format: png
+    fig-pos: "H"
+    raw_tex: true
+    toc: false
+    # toc-depth: 2
+    geometry:
+      - footskip=1cm
+      - left=2cm
+      - right=2cm
+      - top=2.5cm
+      - bottom=2.5cm
+      - heightrounded
+    # To use font Merriweather & Open Sans, they should be installed on 
+    # your computer, as a system font (not as a LaTeX font).
+    mainfont: "Merriweather"
+    sansfont: "Open Sans"
+    fontsize: 9pt
+    linestretch: 1.15
+    breaklines: true
+    filters:
+      - convert_scripts/fix_mdtopdf_links.lua
+      - convert_scripts/convert_htmltopdf_images.lua
+    # Do not change '#XX.YY#' below, it will be modified by the Makefile.
+    include-in-header:
+      text: |
+        \usepackage{scrlayer-scrpage}
+        \pagestyle{scrheadings}
+        \cfoot{}
+        \ifoot{\parbox[t]{\dimexpr\textwidth-1cm\relax}{
+          \setstretch{0.6}
+          \textrm{\footnotesize
+          This is documentation for version #XX.YY# of Ricgraph - Research 
+          in context graph.
+          For more information about Ricgraph, Ricgraph Explorer, and the
+          Ricgraph REST API, please read the reference publication 
+          \href{https://doi.org/10.1016/j.softx.2024.101736}
+          {https://doi.org/10.1016/j.softx.2024.101736}, visit the website 
+          \href{https://www.ricgraph.eu}{www.ricgraph.eu}, 
+          or go to the GitHub
+          repository \href{https://github.com/UtrechtUniversity/ricgraph}
+          {https://github.com/UtrechtUniversity/ricgraph.}}}}
+        \ofoot{\pagemark} 
+
+keywords:
+  - "Research in context graph"
+  - "Ricgraph"
+  - "Ricgraph Explorer"
+  - "Ricgraph REST API"
+  - "Data enrichment"
+  - "Data harvesting"
+  - "Data linking"
+  - "Enrichment"
+  - "Graph"
+  - "Graph database"
+  - "Harvest"
+  - "Harvest data"
+  - "Harvester"
+  - "Knowledge graph"
+  - "Linked data"
+  - "Metadata"
+  - "Utrecht University"
+  - "Visualization"
+
