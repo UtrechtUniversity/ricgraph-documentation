@@ -15,9 +15,9 @@ You can generate three "targets":
 * the Documentation website for Ricgraph,
   [https://documentation.ricgraph.eu](https://documentation.ricgraph.eu);
 * the Tutorial for Ricgraph,
-  [https://documentation.ricgraph.eu/ricgraph-tutorial.pdf](https://documentation.ricgraph.eu/ricgraph-tutorial.pdf);
+  [https://documentation.ricgraph.eu/ricgraph_tutorial.pdf](https://documentation.ricgraph.eu/ricgraph_tutorial.pdf);
 * the Full documentation for Ricgraph,
-  [https://documentation.ricgraph.eu/ricgraph-fulldocumentation.pdf](https://documentation.ricgraph.eu/ricgraph-fulldocumentation.pdf).
+  [https://documentation.ricgraph.eu/ricgraph_fulldocumentation.pdf](https://documentation.ricgraph.eu/ricgraph_fulldocumentation.pdf).
 
 
 The documentation for Ricgraph is generated using
@@ -79,7 +79,7 @@ make help
   ```
 * Find the version number of the most recent version of the documentation
   in directory 
-  [https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib-documentation](https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib-documentation).
+  [https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib_documentation](https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib_documentation).
 * Install the documentation, type:
   ```
   sudo bash
