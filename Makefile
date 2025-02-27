@@ -43,7 +43,8 @@ endif
 # 'ricgraph_dir' should be done differently. It is relative to the directory
 # of this Makefile.
 ricgraph_dir := ../ricgraph
-ricgraph_doc_file := ricgraph_documentation-v$(ricgraph_version).tar.gz
+# The '-{0..10}' is to create multiple filenames when tarring.
+ricgraph_doc_file := ricgraph_documentation-v$(ricgraph_version)-{0..10}.tar.gz
 ricgraph_doc_download := https://github.com/UtrechtUniversity/ricgraph-documentation
 distrib_file := $(distrib_dir)/$(ricgraph_doc_file)
 ricgraph_doc_path := $(ricgraph_doc_download)/tree/main/$(distrib_file)
@@ -160,8 +161,9 @@ build_fulldoc_pdf: check_user_notroot
 
 create_distrib:
 ifeq ($(shell test -d $(build_dir) && echo true),true)
-	rm -f $(distrib_dir); mkdir $(distrib_dir)
-	tar -czf $(distrib_file) $(build_dir)
+	rm -fr $(distrib_dir); mkdir $(distrib_dir)
+	@# --multi-volume in needed since GitHub does not accept files > 100MB.
+	tar --multi-volume --tape-length=75M -c --file=$(distrib_file) $(build_dir)
 else
 	@echo "Error, directory $(build_dir) does not exist."
 endif
@@ -196,7 +198,7 @@ install_documentation_website: check_user_root
 	cd $(webserver_dir); \
 	mkdir ricgraph-documentation; \
 	cd ricgraph-documentation; \
-	tar xf ../$(ricgraph_doc_file); \
+	tar --multi-volume -x --file=../$(ricgraph_doc_file); \
 	mv $(build_dir)/* .; \
 	rmdir $(build_dir)
 	chown -R root:root $(webserver_dir)/ricgraph-documentation
