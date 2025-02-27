@@ -47,7 +47,7 @@ ricgraph_dir := ../ricgraph
 ricgraph_doc_file := ricgraph_documentation-v$(ricgraph_version)-{0..5}.tar
 ricgraph_doc_download := https://github.com/UtrechtUniversity/ricgraph-documentation
 distrib_file := $(distrib_dir)/$(ricgraph_doc_file)
-ricgraph_doc_path := $(ricgraph_doc_download)/tree/main/$(distrib_file)
+ricgraph_doc_path := $(ricgraph_doc_download)/raw/main/$(distrib_file)
 
 
 # ########################################################################
