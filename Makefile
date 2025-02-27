@@ -199,7 +199,8 @@ install_documentation_website: check_user_root
 	cd ricgraph-documentation; \
 	bash -c "tar --multi-volume -x --file=../$(ricgraph_doc_file)"; \
 	mv $(build_dir)/* .; \
-	rmdir $(build_dir)
+	rmdir $(build_dir); \
+	rm ../ricgraph_documentation*.tar
 	chown -R root:root $(webserver_dir)/ricgraph-documentation
 	chmod -R go-w $(webserver_dir)/ricgraph-documentation
 	@echo "Restarting webserver:"
