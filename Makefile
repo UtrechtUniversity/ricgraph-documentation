@@ -21,9 +21,9 @@
 ifeq ($(shell test -d /srv/www/htdocs && echo true),true)
 	# E.g. for OpenSUSE Leap & Tumbleweed.
 	webserver_dir := /srv/www/htdocs
-else ifeq ($(shell test -d /var/www/htdocs && echo true),true)
+else ifeq ($(shell test -d /var/www/html && echo true),true)
 	# E.g. for Ubuntu and Debian.
-	webserver_dir := /var/www/htdocs
+	webserver_dir := /var/www/html
 else
 	webserver_dir := [not_set]
 endif
@@ -193,12 +193,11 @@ install_documentation_website: check_user_root
 	@echo ""
 	@if [ -d $(webserver_dir)/ricgraph-documentation ]; then mv -f $(webserver_dir)/ricgraph-documentation $(webserver_dir)/ricgraph-documentation-old ; fi
 	cd $(webserver_dir); \
-	wget $(ricgraph_doc_path); \
-	@#if [ ! -f $(ricgraph_doc_file) ]; then echo "Error, something went wrong downloading file '$(ricgraph_doc_file)'."; exit 1; fi
+	bash -c "wget $(ricgraph_doc_path)"; \
 	cd $(webserver_dir); \
 	mkdir ricgraph-documentation; \
 	cd ricgraph-documentation; \
-	tar --multi-volume -x --file=../$(ricgraph_doc_file); \
+	bash -c "tar --multi-volume -x --file=../$(ricgraph_doc_file)"; \
 	mv $(build_dir)/* .; \
 	rmdir $(build_dir)
 	chown -R root:root $(webserver_dir)/ricgraph-documentation
