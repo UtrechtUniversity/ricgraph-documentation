@@ -21,74 +21,42 @@ project:
   type: website
   render:
     # The first here will be referred to in 'index.html'.
-    - docs/ricgraph_tutorial.md
-    - "docs/*.md"
-    - "README.md"
+    - website/what-is-ricgraph.md
+    - "website/*.md"
   
 website:
-  title: "Documentation Ricgraph - Research in context graph"
-  description: "This website is the documentation for Ricgraph - Research in context graph"
-  favicon: docs/images/favicon.ico
+  title: "Website Ricgraph - Research in context graph"
+  description: "This is the website for Ricgraph - Research in context graph"
+  favicon: website/images/favicon.ico
   search: true
   sidebar:
     border: false
-    title: "Research in context graph Documentation"
+    title: "Research in context graph Website"
     style: docked
-    logo: docs/images/ricgraph_logo.png
+    logo: website/images/ricgraph_logo.png
     logo-alt: "Ricgraph logo"
     search: true
     background: primary
     collapse-level: 1
     contents:
-      - text: "Tutorial Ricgraph"
-        href: docs/ricgraph_tutorial.md
-      - text: "Readme Ricgraph"
-        href: README.md
-      - section: "Installation and harvesting"
+      - text: "What is Ricgraph?"
+        href: website/what-is-ricgraph.md
+      - text: "Learn more"
+        href: website/learn-more-about-ricgraph.md
+      - section: "Testing"
         contents:
-          - href: docs/ricgraph_install_configure.md
-          - href: docs/ricgraph_harvest_scripts.md
-      - text: "Exploring Ricgraph"
-        href: docs/ricgraph_explorer.md
-      - section: "Outreach"
-        contents:
-          - text: Publications, presentations, and more
-            href: docs/ricgraph_pubs_pres_news_use_ment.md
-          - text: Videos
-            href: docs/ricgraph_example_use_videos.md
-      - section: "More options"
-        contents:
-          - section: "Installation options"
-            contents:
-              - href: docs/ricgraph_containerized.md
-              - href: docs/ricgraph_as_server.md
-          - section: "Graph database backends"
-            contents:
-              - text: "Ricgraph with Neo4j"
-                href: docs/ricgraph_backend_neo4j.md
-              - text: "Ricgraph with Memgraph"
-                href: docs/ricgraph_backend_memgraph.md
-          - section: "Ricgraph REST API"
-            contents:
-              - text: "REST API information"
-                href: docs/ricgraph_restapi.md
-              - text: "REST API endpoint documentation"
-                href: docs/ricgraph_restapi_gendoc.md
-          - href: docs/ricgraph_details.md
-          - href: docs/ricgraph_misc_scripts.md
-          - href: docs/ricgraph_script_writing.md
-          - text: "Compare Ricgraph to others"
-            href: docs/ricgraph_comparison.md
-          - text: "Known bugs"
-            href: docs/ricgraph_known_bugs.md
-      - text: "Table of contents"
-        href: docs/ricgraph_toc_documentation.md
-      - text: "Index"
-        href: docs/ricgraph_index_documentation.md
-      - text: "Tutorial pdf"
-        href: ricgraph_tutorial.pdf
-      - text: "Full documentation pdf"
-        href: ricgraph_fulldocumentation.pdf
+          - text: "Again read more"
+            href: website/read-more-about-ricgraph.md
+          - text: "And even more"
+            href: website/read-more-about-ricgraph.md
+          - text: "Test"
+            href: website/test-ricgraph.md
+      - text: "Read more"
+        href: website/read-more-about-ricgraph.md
+      - text: "Get Ricgraph"
+        href: website/get-ricgraph.md
+      - text: "Contact"
+        href: website/contact.md
     footer: >
           [![DOI Ricgraph software](https://img.shields.io/badge/DOI%20software-10.5281/zenodo.7524314-blue)](https://doi.org/10.5281/zenodo.7524314)
           [![DOI Ricgraph reference publication](https://img.shields.io/badge/DOI%20publication-10.1016%2Fj.softx.2024.101736-blue)](https://doi.org/10.1016/j.softx.2024.101736)
@@ -106,16 +74,17 @@ website:
     left:
       # Do not change '#XX.YY#' below, it will be modified by the Makefile.
       - text: >
-          This is documentation for version #XX.YY# of Ricgraph - Research 
-          in context graph.
-          For more information about Ricgraph, Ricgraph Explorer, and the
-          Ricgraph REST API, please read the reference publication 
-          <a href="https://doi.org/10.1016/j.softx.2024.101736">
-          https://doi.org/10.1016/j.softx.2024.101736</a>, visit the website 
-          <a href=https://www.ricgraph.eu>www.ricgraph.eu</a>, 
-          or go to the GitHub
-          repository <a href=https://github.com/UtrechtUniversity/ricgraph>
-          https://github.com/UtrechtUniversity/ricgraph</a>. 
+          You are visiting one of the Ricgraph websites 
+          <a href="www.ricgraph.eu" style="fontsize: 50%">
+          www.ricgraph.eu</a>,
+          <a href="www.ricgraph.nl" style="fontsize: 50%">
+          www.ricgraph.nl</a>, or
+          <a href="www.ricgraph.com" style="fontsize: 50%">
+          www.ricgraph.com</a>.
+    #center:
+    #  - text: ""
+    #right:
+      #- text: ""
 
 format:
   html:
@@ -124,11 +93,12 @@ format:
     theme: 
       - cosmo
       - ricgraph.scss
-    mainfont: "Open Sans"
     toc: true
     lightbox: true
     filters:
       - convert_scripts/fix_mdtohtml_links.lua
+    # The font used on the webpages is determined by the 'fonts.' below and 
+    # a setting in ricgraph.scss.
     include-in-header:
       - text: |
           <link href='https://fonts.googleapis.com/css?family=Open+Sans' 

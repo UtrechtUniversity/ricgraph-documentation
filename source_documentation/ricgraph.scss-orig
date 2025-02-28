@@ -1,0 +1,43 @@
+/* SCSS file for Ricgraph documentation.
+ * All variable names are in 
+ * https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+ */
+
+/*-- scss:defaults --*/
+$primary: #ffcd00;
+$link-color: #0d6efd !default;
+$nav-link-font-size: 80%;
+$toc-font-size: 80%;
+
+/*-- scss:rules --*/
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+figcaption {
+  text-align: center;
+}
+.sidebar-item-container .menu-text {
+  font-size: 85%;
+}
+.sidebar-navigation a:hover {
+  color: #0d6efd;
+}
+.sidebar-navigation {
+  width: 250px;
+}
+.quarto-page-breadcrumbs {
+  font-size: 80%;
+}
+.nav-footer a {
+  color: #0d6efd;
+}
+.nav-footer {
+  display: block;
+}
+.nav-footer-left {
+  height: 0px;
+}
+.keywords {
+  display: none;
+  visibility: hidden;
+}

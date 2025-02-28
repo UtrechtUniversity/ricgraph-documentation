@@ -133,7 +133,7 @@ build_tutorial_pdf: check_user_notroot
 	cd $(source_dir); cp docs/ricgraph_tutorial.md index.md
 	@cd $(source_dir); \
 	sed -i 's|(images/|(docs/images/|g' index.md; \
-	sed -i 's|(\([^#]*\)\.md#\(.*\)|(https://documentation.ricgraph.eu/docs/\1.html#\2|g' index.md
+	sed -i 's|(\([^#]*\)\.md#\(.*\)|(https://docs.ricgraph.eu/docs/\1.html#\2|g' index.md
 	cd $(source_dir); quarto render --output ricgraph_tutorial.pdf
 
 

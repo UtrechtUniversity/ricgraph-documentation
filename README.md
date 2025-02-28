@@ -13,11 +13,11 @@ or to its website
 You can generate three "targets":
 
 * the Documentation website for Ricgraph,
-  [https://documentation.ricgraph.eu](https://documentation.ricgraph.eu);
+  [https://docs.ricgraph.eu](https://docs.ricgraph.eu);
 * the Tutorial for Ricgraph,
-  [https://documentation.ricgraph.eu/ricgraph_tutorial.pdf](https://documentation.ricgraph.eu/ricgraph_tutorial.pdf);
+  [https://docs.ricgraph.eu/ricgraph_tutorial.pdf](https://docs.ricgraph.eu/ricgraph_tutorial.pdf);
 * the Full documentation for Ricgraph,
-  [https://documentation.ricgraph.eu/ricgraph_fulldocumentation.pdf](https://documentation.ricgraph.eu/ricgraph_fulldocumentation.pdf).
+  [https://docs.ricgraph.eu/ricgraph_fulldocumentation.pdf](https://docs.ricgraph.eu/ricgraph_fulldocumentation.pdf).
 
 
 The documentation for Ricgraph is generated using
@@ -116,14 +116,14 @@ Configure Apache as follows:
 * Make sure Certbot has been installed.
 * Install the Apache configuration file for the Ricgraph documentation website:
   copy file
-  *server_config/documentation-ricgraph-eu.conf-template-apache2*
+  *server_config/docs-ricgraph-eu.conf-template-apache2*
   to /etc/apache2/vhosts.d and rename it, type:
   ```
-  cp ricgraph_server_config/documentation-ricgraph-eu.conf-template-apache2 /etc/apache2/vhosts.d/documentation-ricgraph-eu.conf
-  chmod 600 /etc/apache2/vhosts.d/documentation-ricgraph-eu.conf
+  cp ricgraph_server_config/docs-ricgraph-eu.conf-template-apache2 /etc/apache2/vhosts.d/docs-ricgraph-eu.conf
+  chmod 600 /etc/apache2/vhosts.d/docs-ricgraph-eu.conf
   ```
   This file assumes that
-  [https://documentation.ricgraph.eu](https://documentation.ricgraph.eu)
+  [https://docs.ricgraph.eu](https://docs.ricgraph.eu)
   will be hosting the Ricgraph documentation files.
   Change this file in such a way it fits your situation.
 * Depending on you situation:
@@ -145,10 +145,10 @@ Configure Apache as follows:
     ```
 * Request a certbot certificate, type:
   ```
-  certbot --apache -d documentation.ricgraph.eu
+  certbot --apache -d docs.ricgraph.eu
   ```
 * Enable SSL in the config file. With your favorite text editor, in the config file
-  *documentation-ricgraph-eu.conf*, change line:
+  *docs-ricgraph-eu.conf*, change line:
   ```
   #SSLEngine on
   ```
@@ -162,4 +162,4 @@ Configure Apache as follows:
   ```
 * Exit from user *root*.
 * In your web browser, go to
-  [https://documentation.ricgraph.eu](https://documentation.ricgraph.eu).
+  [https://docs.ricgraph.eu](https://docs.ricgraph.eu).
