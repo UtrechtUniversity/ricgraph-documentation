@@ -14,6 +14,7 @@ source_documentation/index.*
 source_documentation/_quarto.yml
 source_documentation/README.md
 source_documentation/.quarto
+source_documentation/website
 build_documentation
 
 # ###########################
