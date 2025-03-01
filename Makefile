@@ -54,7 +54,7 @@ ricgraph_docs_file := ricgraph_documentation-v$(ricgraph_version)-{0..3}.tar
 distrib_docs_file := $(distrib_docs_dir)/$(ricgraph_docs_file)
 ricgraph_docs_path := $(ricgraph_rep_download)/raw/main/$(distrib_docs_file)
 
-ricgraph_website_file := ricgraph_documentation-v$(ricgraph_version).tar
+ricgraph_website_file := ricgraph_website-v$(ricgraph_version).tar
 distrib_website_file := $(distrib_website_dir)/$(ricgraph_website_file)
 ricgraph_website_path := $(ricgraph_rep_download)/raw/main/$(distrib_website_file)
 
