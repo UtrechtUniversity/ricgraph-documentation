@@ -1,0 +1,146 @@
+/* SCSS file for Ricgraph documentation.
+ * All variable names are in 
+ * https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+ */
+
+/*-- scss:defaults --*/
+$primary: #ffcd00;
+$link-color: #0d6efd;
+$font-size-base: 1.05rem;
+$line-height-base: 1.7;
+/*
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
+*/
+$h1-font-size: $font-size-base * 1.75;
+$h2-font-size: $font-size-base * 1.5;
+$h3-font-size: $font-size-base * 1;
+$h4-font-size: $font-size-base;
+$h5-font-size: $font-size-base;
+$h6-font-size: $font-size-base;
+
+/*-- scss:rules --*/
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+.keywords {
+  display: none;
+  visibility: hidden;
+}
+figcaption {
+  text-align: center;
+}
+
+/* Header modifications (also see above for font sizes) */
+/* Insert a line under h2 */
+h1, .h1 {
+    border-bottom: 2px solid $link-color;
+    padding-bottom: 10px;
+}
+/* Remove the line under h2 */
+h2, .h2 {
+    border-bottom: 0px;
+    padding-bottom: 0px;
+}
+h4, .h4 {
+  font-weight: 400;
+}
+h5, .h5 {
+  font-weight: 400;
+  font-style: italic !important;
+}
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-bottom: 0.2rem;
+    margin-top: 2rem !important;
+}
+/* End of Header modifications */
+
+/* The following are required to make font size dependent on $font-size-base. */
+.sidebar-title {
+  font-size: 100%;
+}
+.sidebar-navigation .sidebar-item {
+  font-size: 95%;
+}
+.sidebar-navigation .sidebar-item a, 
+.nav-page .nav-page-text, .sidebar-navigation {
+  font-size: 95%;
+}
+/* End of The following are required to ... */
+
+/* Underline links if they are hovered */
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+/* And also for the nav sidebar (on the right) */
+.sidebar nav[role=doc-toc] ul>li>a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.sidebar nav[role=doc-toc] ul>li>ul>li>a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+/* But differently for the sidebar (on the left) */
+.sidebar-navigation a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+/* End of Underline links if they are hovered */
+
+/* Width of the sidebar,also when docked.
+   If you change this, also change grid->sidebar-width in _quarto-*.yml */
+body.docked .sidebar-navigation {
+  width: 270px;
+}
+.sidebar-menu-container {
+  padding-bottom: 0px;
+}
+/*
+main#quarto-document-content {
+  margin-left: 10px;
+}
+*/
+
+/* Footer stuff */
+.nav-footer a {
+  color: $link-color;
+}
+.nav-footer {
+  display: block;
+  text-align: left;
+  font-size: 80%;
+  line-height: 1.5; // default line-height for bootstrap
+}
+/*
+.nav-footer-left {
+  height: 0px;
+}
+*/
+.nav-footer-center {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  min-height: 0px;
+  height: 0px;
+}
+.nav-footer-right {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  min-height: 0px;
+  height: 0px;
+}
+/* End of Footer stuff */

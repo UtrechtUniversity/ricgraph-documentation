@@ -9,13 +9,14 @@ ricgraph.ini
 .idea
 *experimental*
 !neo4j_config/*.json
-source_documentation/docs
-source_documentation/index.*
-source_documentation/_quarto.yml
-source_documentation/README.md
-source_documentation/.quarto
-source_documentation/website
+source_docs_website/docs
+source_docs_website/index.*
+source_docs_website/_quarto.yml
+source_docs_website/README.md
+source_docs_website/.quarto
+source_docs_website/website
 build_documentation
+build_website
 
 # ###########################
 # Default .gitignore from GitHub on January 4, 2022.
