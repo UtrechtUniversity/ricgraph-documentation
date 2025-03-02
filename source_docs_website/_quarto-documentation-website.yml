@@ -30,6 +30,7 @@ website:
   description: "This website is the documentation for Ricgraph - Research in context graph"
   favicon: docs/images/favicon.ico
   search: true
+  back-to-top-navigation: true
   sidebar:
     border: false
     title: "Documentation Research in context graph"
@@ -39,6 +40,7 @@ website:
     search: true
     background: primary
     collapse-level: 1
+    pinned: true
     contents:
       - text: "Tutorial Ricgraph"
         href: docs/ricgraph_tutorial.md

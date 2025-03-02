@@ -10,47 +10,56 @@
 # ########################################################################
 #
 # This file is the Quarto config file to generate the Ricgraph
-# documentation website.
+# website.
+#
+# Note that Quarto will be run in directory .../source_docs_website/website
+# (the other Quarto build options run in .../source_docs_website).
+# This is necessary to have the html files directly after the website link, 
+# like in "www.ricgraph.eu/what-is-ricgraph.hmtl" instead of
+# "www.ricgraph.eu/website/what-is-ricgraph.hmtl".
 #
 # Original version Rik D.T. Janssen, February 2025.
 #
 # ########################################################################
 
 project:
-  output-dir: ../build_website
+  # See remark above, Quarto is run in dir 'website'.
+  output-dir: ../../build_website
   type: website
   render:
     # The first here will be referred to in 'index.html'.
-    - website/what-is-ricgraph.md
-    - "website/*.md"
+    - what-is-ricgraph.md
+    - "*.md"
   
 website:
   title: "Website Ricgraph - Research in context graph"
   description: "This is the website for Ricgraph - Research in context graph"
-  favicon: website/images/favicon.ico
+  favicon: images/favicon.ico
   search: true
+  back-to-top-navigation: true
   sidebar:
     border: false
     title: "Research in context graph"
     style: docked
-    logo: website/images/ricgraph_logo.png
+    logo: images/ricgraph_logo.png
     logo-alt: "Ricgraph logo"
     search: true
     background: primary
     collapse-level: 1
+    pinned: true
     contents:
       - text: "What is Ricgraph?"
-        href: website/what-is-ricgraph.md
+        href: what-is-ricgraph.md
       - text: "Learn more"
-        href: website/learn-more-about-ricgraph.md
+        href: learn-more-about-ricgraph.md
       - text: "Read more"
-        href: website/read-more-about-ricgraph.md
+        href: read-more-about-ricgraph.md
       - text: "Read documentation"
         href: "https://docs.ricgraph.eu"
       - text: "Get Ricgraph"
-        href: website/get-ricgraph.md
+        href: get-ricgraph.md
       - text: "Contact"
-        href: website/contact.md
+        href: contact.md
     footer: >
           [![DOI Ricgraph software](https://img.shields.io/badge/DOI%20software-10.5281/zenodo.7524314-blue)](https://doi.org/10.5281/zenodo.7524314)
           [![DOI reference Ricgraph publication](https://img.shields.io/badge/DOI%20publication-10.1016%2Fj.softx.2024.101736-blue)](https://doi.org/10.1016/j.softx.2024.101736)
@@ -84,11 +93,11 @@ format:
       sidebar-width: 400px
     theme: 
       - cosmo
-      - ricgraph.scss
+      - ../ricgraph.scss
     toc: true
     lightbox: true
     filters:
-      - convert_scripts/fix_mdtohtml_links.lua
+      - ../convert_scripts/fix_mdtohtml_links.lua
     # The font used on the webpages is determined by the 'fonts.' below and 
     # a setting in ricgraph.scss.
     include-in-header:

@@ -140,7 +140,6 @@ ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
 	@sed -i '/^<img alt="Ricgraph logo"/d' $(source_dir)/README.md
 endif
 
-
 get_website: check_user_notroot
 ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
@@ -192,9 +191,9 @@ build_fulldoc_pdf: check_user_notroot
 
 
 build_website: get_website check_user_notroot
-	rm -rf $(distrib_website_dir)
-	cd $(source_dir); cp _quarto-website.yml _quarto.yml
-	cd $(source_dir); quarto render
+	rm -rf $(build_website_dir)
+	cd $(source_dir); cp _quarto-website.yml website/_quarto.yml
+	cd $(source_dir)/website; quarto render
 
 
 create_distrib_documentation:
@@ -311,6 +310,7 @@ veryclean: check_user_notroot
 	rm -f $(source_dir)/README.md $(source_dir)/_quarto.yml
 	rm -f $(source_dir)/index.*
 	rm -rf $(source_dir)/website $(build_website_dir) $(distrib_website_dir)
+	rm -f $(source_dir)/website/_quarto.yml
 
 
 check_user_root:

@@ -11,7 +11,7 @@ ricgraph.ini
 !neo4j_config/*.json
 source_docs_website/docs
 source_docs_website/index.*
-source_docs_website/_quarto.yml
+_quarto.yml
 source_docs_website/README.md
 source_docs_website/.quarto
 source_docs_website/website
