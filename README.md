@@ -10,8 +10,12 @@ Ricgraph, go to its
 or to its website
 [www.ricgraph.eu](https://www.ricgraph.eu).
 
-You can generate three "targets":
+You can generate four "targets":
 
+* the Website for Ricgraph,
+  [www.ricgraph.eu](https://www.ricgraph.eu) (also on
+  [www.ricgraph.nl](https://www.ricgraph.nl) and
+  [www.ricgraph.com](https://www.ricgraph.com));
 * the Documentation website for Ricgraph,
   [https://docs.ricgraph.eu](https://docs.ricgraph.eu);
 * the Tutorial for Ricgraph,
@@ -43,7 +47,7 @@ make help
 ```
 
 
-## Generate documentation and create a distribution file
+## Generate documentation and website, and create a distribution file
 
 * Find the version number of the most recent released version of the documentation
   in directory
@@ -57,7 +61,7 @@ make help
   ```
 * Download the most recent version of the Makefile. Type:
   ```
-  cd
+  cd ricgraph-documentation-[version number]
   wget https://raw.githubusercontent.com/UtrechtUniversity/ricgraph-documentation/main/Makefile
   ```
 * Type the following command to find the possible targets:
@@ -69,7 +73,7 @@ make help
 * Go to your webserver and install the documentation (read the next section).
 
 
-## Install the documentation distribution file on a webserver
+## Install the documentation and website distribution file on a webserver
 
 * Go to your home directory on the Linux webserver, and
   download the most recent version of the Makefile from the GitHub repository. Type:
@@ -77,15 +81,26 @@ make help
   cd
   wget https://raw.githubusercontent.com/UtrechtUniversity/ricgraph-documentation/main/Makefile
   ```
-* Find the version number of the most recent version of the documentation
-  in directory 
-  [https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib_documentation](https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib_documentation).
-* Install the documentation, type:
-  ```
-  sudo bash
-  make ricgraph_version=[version number without v] install_documentation_website
-  exit
-  ```
+* For the Ricgraph website:
+  * Find the version number of the most recent version of the documentation
+    in directory
+    [https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib_website](https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib_website).
+  * Install the documentation, type:
+    ```
+    sudo bash
+    make ricgraph_version=[version number without v] install_website
+    exit
+    ```
+* For the Ricgraph documentation:
+  * Find the version number of the most recent version of the documentation
+    in directory 
+    [https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib_documentation](https://github.com/UtrechtUniversity/ricgraph-documentation/tree/main/distrib_documentation).
+  * Install the documentation, type:
+    ```
+    sudo bash
+    make ricgraph_version=[version number without v] install_documentation
+    exit
+    ```
 * Done.
 
 
@@ -116,10 +131,10 @@ Configure Apache as follows:
 * Make sure Certbot has been installed.
 * Install the Apache configuration file for the Ricgraph documentation website:
   copy file
-  *server_config/docs-ricgraph-eu.conf-template-apache2*
+  *server_config/docs-ricgraph-eu.conf-template-apache*
   to /etc/apache2/vhosts.d and rename it, type:
   ```
-  cp ricgraph_server_config/docs-ricgraph-eu.conf-template-apache2 /etc/apache2/vhosts.d/docs-ricgraph-eu.conf
+  cp server_config/docs-ricgraph-eu.conf-template-apache /etc/apache2/vhosts.d/docs-ricgraph-eu.conf
   chmod 600 /etc/apache2/vhosts.d/docs-ricgraph-eu.conf
   ```
   This file assumes that
@@ -163,3 +178,11 @@ Configure Apache as follows:
 * Exit from user *root*.
 * In your web browser, go to
   [https://docs.ricgraph.eu](https://docs.ricgraph.eu).
+
+For the Ricgraph website, the steps are similar.
+The Apache configuration file for the website
+[www.ricgraph.eu](https://www.ricgraph.eu) is
+in *server_config/ricgraph-eu.conf-template-apache*.
+The Apache config files for
+[www.ricgraph.nl](https://www.ricgraph.nl) and
+[www.ricgraph.com](https://www.ricgraph.com) are similar.
