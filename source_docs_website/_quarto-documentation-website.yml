@@ -49,7 +49,6 @@ website:
       - text: "Tutorial Ricgraph"
         href: docs/ricgraph_tutorial.md
       - section: "Full documentation"
-        href: README.md
         contents:
           - text: "Readme Ricgraph"
             href: README.md

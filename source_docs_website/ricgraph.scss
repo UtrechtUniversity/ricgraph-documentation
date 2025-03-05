@@ -44,6 +44,10 @@ figcaption {
 .content a {
   overflow-wrap: break-word;
 }
+/* Break everything if it does not fit on a line */
+.content {
+  overflow-wrap: break-word;
+}
 
 /* Header modifications (also see above for font sizes) */
 /* Insert a line under h2 */

@@ -28,14 +28,13 @@ book:
   chapters:
     - index.md
     # The Makefile will add a part for the full documentation.
+    - docs/ricgraph_documentation_intro.md
     - README.md
     - docs/ricgraph_install_configure.md
     - docs/ricgraph_harvest_scripts.md
     - docs/ricgraph_explorer.md
     - docs/ricgraph_pubs_pres_news_use_ment.md
     - docs/ricgraph_example_use_videos.md
-    - docs/ricgraph_script_writing.md
-    - docs/ricgraph_misc_scripts.md
     - docs/ricgraph_containerized.md
     - docs/ricgraph_as_server.md
     - docs/ricgraph_backend_neo4j.md
@@ -43,6 +42,8 @@ book:
     - docs/ricgraph_restapi.md
     - docs/ricgraph_restapi_gendoc.md
     - docs/ricgraph_details.md
+    - docs/ricgraph_misc_scripts.md
+    - docs/ricgraph_script_writing.md
     - docs/ricgraph_comparison.md
     - docs/ricgraph_known_bugs.md
     - docs/ricgraph_toc_documentation.md
