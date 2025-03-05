@@ -14,6 +14,7 @@ source_docs_website/index.*
 _quarto.yml
 source_docs_website/README.md
 source_docs_website/.quarto
+source_docs_website/.gitignore
 source_docs_website/website
 build_documentation
 build_website
