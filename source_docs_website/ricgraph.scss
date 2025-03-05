@@ -4,6 +4,11 @@
  */
 
 /*-- scss:defaults --*/
+
+/* If you change $grid-sidebar-width, also change 
+ * "body.docked .sidebar-navigation" key 'width' below.
+ */
+$grid-sidebar-width: 400px;
 $primary: #ffcd00;
 $link-color: #0d6efd;
 $font-size-base: 1.05rem;
@@ -33,6 +38,11 @@ body {
 }
 figcaption {
   text-align: center;
+  color: black;
+}
+/* Break Urls if they do not fit on a line */
+.content a {
+  overflow-wrap: break-word;
 }
 
 /* Header modifications (also see above for font sizes) */
@@ -102,13 +112,24 @@ a {
 }
 /* End of Underline links if they are hovered */
 
-/* Width of the sidebar,also when docked.
-   If you change this, also change grid->sidebar-width in _quarto-*.yml */
+/* Width of the sidebar, both collapsed and not collapsed.
+/* If you change this, also change $grid-sidebar-width above.
+ */
 body.docked .sidebar-navigation {
   width: 270px;
 }
 .sidebar-menu-container {
   padding-bottom: 0px;
+}
+/* Items that are wider than the width of the sidebar will be broken in
+ * more lines, where the continuation line is indented 
+ */
+.sidebar .sidebar-item-container {
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  padding-left: 1em;
+  text-indent: -1em;
 }
 /*
 main#quarto-document-content {

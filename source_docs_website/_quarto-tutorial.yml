@@ -20,6 +20,8 @@ project:
   output-dir: ../build_documentation
   type: book
 
+lang: en
+
 book:
   title: "Tutorial Ricgraph - Research in context graph"
   author: "Rik D.T. Janssen, Utrecht University, ORCID 0000-0001-9510-0802"
