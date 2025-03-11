@@ -10,16 +10,23 @@
 
 function Link(el)
   if el.target:match("^%a+://")  -- Not a web URL (e.g., http:// or https://)
-    or el.target:match("^/")       -- Not an absolute path (e.g., /assets/file.pdf)
+    or el.target:match("^/")     -- Not an absolute path (e.g. /assets/file.pdf)
     or el.target:match("^docs/") then  -- Prevent duplicate "docs/" prefixes
     return el
   end
 
-  if el.target:match('.+/[^/]+%.pdf$') 
-    or el.target:match('.+/[^/]+%.mp4$') then
+  if el.target:match('.+/[^/]+%.pdf$') then
+    -- For pdf, it is necessary to return the full link.
+    el.target = "https://docs.ricgraph.eu/docs/" .. el.target
+    return el
+  end
+
+  if el.target:match('.+/[^/]+%.mp4$') then
+    -- For mp4, it is sufficient to only prepend it with 'docs/'.
     el.target = "docs/" .. el.target
     return el
   end
+
 
   if el.target:match('.+/[^/]+%.md$') then
     el.target = "docs/" .. el.target
