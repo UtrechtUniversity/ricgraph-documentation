@@ -22,15 +22,18 @@ project:
   render:
     # The first here will be referred to in 'index.html'.
     - docs/ricgraph_documentation_intro.md
-    - "docs/*.md"
     - "README.md"
+    - "docs/*.md"
+    - "docs/newsletters/*.md"
   
 lang: en
+description-meta: "Ricgraph (Research in context graph) enables the exploration of researchers, teams, their results, collaborations, skills, projects, and the relations between these items."
+author-meta: "Rik D.T. Janssen"
+# Meta 'keywords' is at the end of this file.
 
 website:
   title: "Documentation Ricgraph - Research in context graph"
-  description: "This website is the documentation for Ricgraph - Research in context graph"
-  favicon: docs/images/favicon.ico
+  favicon: favicon.ico
   search: true
   back-to-top-navigation: true
   sidebar:
@@ -134,7 +137,8 @@ format:
     toc: true
     lightbox: true
     filters:
-      - convert_scripts/fix_mdtohtml_links.lua
+      - convert_scripts/set_webpage_title.lua
+      #- convert_scripts/fix_mdtohtml_links.lua
     include-in-header:
       - text: |
           <link href='https://fonts.googleapis.com/css?family=Open+Sans' 

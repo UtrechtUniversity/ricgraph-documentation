@@ -32,11 +32,13 @@ project:
     - "*.md"
   
 lang: en
+description-meta: "Ricgraph (Research in context graph) enables the exploration of researchers, teams, their results, collaborations, skills, projects, and the relations between these items."
+author-meta: "Rik D.T. Janssen"
+# Meta 'keywords' is at the end of this file.
 
 website:
   title: "Website Ricgraph - Research in context graph"
-  description: "This is the website for Ricgraph - Research in context graph"
-  favicon: images/favicon.ico
+  favicon: favicon.ico
   search: true
   back-to-top-navigation: true
   sidebar:
@@ -77,7 +79,6 @@ website:
   page-footer: 
     background: primary
     left:
-      # Do not change '#XX.YY#' below, it will be modified by the Makefile.
       - text: >
           You are visiting one of the Ricgraph websites 
           <a href="https://www.ricgraph.eu">
@@ -95,7 +96,8 @@ format:
     toc: true
     lightbox: true
     filters:
-      - ../convert_scripts/fix_mdtohtml_links.lua
+      - ../convert_scripts/set_webpage_title.lua
+      #- ../convert_scripts/fix_mdtohtml_links.lua
     # The font used on the webpages is determined by the 'fonts.' below and 
     # a setting in ricgraph.scss.
     include-in-header:

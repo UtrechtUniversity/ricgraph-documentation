@@ -127,17 +127,31 @@ makefile_variables:
 # Ricgraph targets.
 # ########################################################################
 
+# The "sed" in the "for file in" are to modify the HTML
+# <img alt="some text" src="path/to/file" width="40%"> to markdown 
+# ![some text](path/to/file){width=40%}. The next
+# <img src="path/to/file" alt="some text" width="40%"> to markdown 
+# ![some text](path/to/file){width=40%}. The next
+# <img src="path/to/file" width="40%"> to markdown 
+# ![](path/to/file){width=40%}
+# Note that it only works when given as above order.
+
 get_docs: check_user_notroot
 ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
 	@echo "Get the documentation files:"
 	cp -r $(ricgraph_dir)/docs $(source_dir)
 	cp $(ricgraph_dir)/README.md $(source_dir)
-	@echo "Remove the badges from the README.md file."
-	@sed -i '/^\[!\[/d' $(source_dir)/README.md
-	@sed -i '/^!\[/d' $(source_dir)/README.md
-	@echo "Remove the logo from the README.md file."
-	@sed -i '/^<img alt="Ricgraph logo"/d' $(source_dir)/README.md
+	@echo "Move favicon.ico."
+	mv $(source_dir)/docs/images/favicon.ico $(source_dir)
+	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
+	@for file in ${source_dir}/README.md ${source_dir}/docs/*.md; do \
+    		sed -i -E 's/<img\s+alt="([^"]*)"\s+src="([^"]*)"\s+width="([^"]*)%">/  ![\1](\2){width=\3%}/g' "$$file"; \
+    		sed -i -E 's/<img\s+src="([^"]*)"\s+alt="([^"]*)"\s+width="([^"]*)%">/  ![\2](\1){width=\3%}/g' "$$file"; \
+    		sed -i -E 's/<img\s+src="([^"]*)"\s+width="([^"]*)%">/  ![](\1){width=\2%}/g' "$$file"; \
+	done
+	@echo "Remove the badges and logo from the README.md file."
+	@sed -i '1,/<!--- Mark to remove everything up to here --->/d' $(source_dir)/README.md
 endif
 
 get_website: check_user_notroot
@@ -145,10 +159,15 @@ ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
 	@echo "Get the website files:"
 	cp -r $(ricgraph_dir)/website $(source_dir)
+	@echo "Move favicon.ico."
+	mv $(source_dir)/website/images/favicon.ico $(source_dir)/website
 endif
 
 
 build_documentation_website: get_docs check_user_notroot
+	rm -rf $(build_docs_dir)/docs $(build_docs_dir)/site_libs
+	rm -f $(build_docs_dir)/*.html $(build_docs_dir)/search.json
+	rm -f $(build_docs_dir)/favicon.ico
 	cd $(source_dir); cp _quarto-documentation-website.yml _quarto.yml
 	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
 	cd $(source_dir); quarto render
@@ -159,6 +178,7 @@ build_documentation_website: get_docs check_user_notroot
 # reports a missing '$'. I think is is a bug in Quarto.
 build_tutorial_pdf: check_user_notroot
 	@if [ ! -d $(source_dir)/docs ]; then echo "Error, docs-dir does not exist, run 'make get_docs' first."; exit 1; fi
+	rm -f $(build_docs_dir)/ricgraph_tutorial.pdf
 	cd $(source_dir); cp _quarto-tutorial.yml _quarto.yml
 	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
 	cd $(source_dir); cp docs/ricgraph_tutorial.md index.md
@@ -173,6 +193,7 @@ build_tutorial_pdf: check_user_notroot
 # reports a missing '$'. I think is is a bug in Quarto.
 build_fulldoc_pdf: check_user_notroot
 	@if [ ! -d $(source_dir)/docs ]; then echo "Error, docs-dir does not exist, run 'make get_docs' first."; exit 1; fi
+	rm -f $(build_docs_dir)/ricgraph_fulldocumentation.pdf
 	cd $(source_dir); cp _quarto-fulldocumentation.yml _quarto.yml
 	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
 	cd $(source_dir); cp docs/ricgraph_tutorial.md index.md
@@ -308,9 +329,8 @@ install_website: check_user_root
 veryclean: check_user_notroot
 	rm -rf $(source_dir)/docs $(build_docs_dir) $(distrib_docs_dir)
 	rm -f $(source_dir)/README.md $(source_dir)/_quarto.yml
-	rm -f $(source_dir)/index.*
+	rm -f $(source_dir)/index.* $(source_dir)/favicon.ico
 	rm -rf $(source_dir)/website $(build_website_dir) $(distrib_website_dir)
-	rm -f $(source_dir)/website/_quarto.yml
 
 
 check_user_root:

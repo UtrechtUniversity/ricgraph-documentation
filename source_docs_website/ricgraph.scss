@@ -116,14 +116,14 @@ a {
 }
 /* End of Underline links if they are hovered */
 
+.sidebar-menu-container {
+  padding-bottom: 0px;
+}
 /* Width of the sidebar, both collapsed and not collapsed.
 /* If you change this, also change $grid-sidebar-width above.
  */
 body.docked .sidebar-navigation {
   width: 270px;
-}
-.sidebar-menu-container {
-  padding-bottom: 0px;
 }
 /* Items that are wider than the width of the sidebar will be broken in
  * more lines, where the continuation line is indented 
@@ -135,11 +135,11 @@ body.docked .sidebar-navigation {
   padding-left: 1em;
   text-indent: -1em;
 }
-/*
-main#quarto-document-content {
-  margin-left: 10px;
+
+/* Show the logo in the collapsed sidebar. */
+img.sidebar-logo.py-0.d-lg-inline.d-none {
+  display: block !important;
 }
-*/
 
 /* Footer stuff */
 .nav-footer a {
@@ -169,3 +169,10 @@ main#quarto-document-content {
   height: 0px;
 }
 /* End of Footer stuff */
+
+/* In some browsers, on mobile, the words in the sidebar extend in the 
+ * chevron ('>' or 'V' symbol). We don't want that, this setting corrects that.
+ */
+.bi.bi-chevron-right.ms-2 {
+  margin-left: 1.3rem !important;
+}

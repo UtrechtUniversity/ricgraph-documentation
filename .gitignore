@@ -1,6 +1,6 @@
 # ###########################
 # .gitignore for Documentation Ricgraph - Research in context graph.
-# January 4, 2023.
+# February 2025.
 # ###########################
 ricgraph.ini
 *.json
@@ -13,6 +13,7 @@ source_docs_website/docs
 source_docs_website/index.*
 _quarto.yml
 source_docs_website/README.md
+source_docs_website/favicon.ico
 source_docs_website/.quarto
 source_docs_website/.gitignore
 source_docs_website/website

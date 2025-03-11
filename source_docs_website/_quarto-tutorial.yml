@@ -51,9 +51,9 @@ format:
     fontsize: 9pt
     linestretch: 1.15
     breaklines: true
-    filters:
-      - convert_scripts/fix_mdtopdf_links.lua
-      - convert_scripts/convert_htmltopdf_images.lua
+    #filters:
+    #  - convert_scripts/fix_mdtopdf_links.lua
+    #  - convert_scripts/convert_htmltopdf_images.lua
     # Do not change '#XX.YY#' below, it will be modified by the Makefile.
     include-in-header:
       text: |
