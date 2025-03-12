@@ -76,7 +76,7 @@ help:
 	@echo "- make build_fulldoc_pdf: build the pdf with the full documentation."
 	@echo "- make build_website: build the website."
 	@echo "- make create_distrib_documentation: create a tar file to distribute."
-	@echo "- 	 the documentation."
+	@echo "  	 the documentation."
 	@echo "- make create_distrib_website: create a tar file to distribute the website."
 	@echo "- make build_all_documentation: do all the build of docs and"
 	@echo "-      create_distrib_documentation of above."
@@ -142,8 +142,9 @@ ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
 	@echo "Get the documentation files:"
 	cp -r $(ricgraph_dir)/docs $(source_dir)
 	cp $(ricgraph_dir)/README.md $(source_dir)
+	cp $(ricgraph_dir)/manifest.json-docswebsite $(source_dir)/manifest.json
 	@echo "Move favicon.ico."
-	mv $(source_dir)/docs/images/favicon.ico $(source_dir)
+	mv $(source_dir)/docs/images/icons/favicon.ico $(source_dir)
 	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
 	@for file in ${source_dir}/README.md ${source_dir}/docs/*.md; do \
     		sed -i -E 's/<img\s+alt="([^"]*)"\s+src="([^"]*)"\s+width="([^"]*)%">/  ![\1](\2){width=\3%}/g' "$$file"; \
@@ -160,7 +161,7 @@ ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	@echo "Get the website files:"
 	cp -r $(ricgraph_dir)/website $(source_dir)
 	@echo "Move favicon.ico."
-	mv $(source_dir)/website/images/favicon.ico $(source_dir)/website
+	mv $(source_dir)/website/images/icons/favicon.ico $(source_dir)/website
 endif
 
 
@@ -330,6 +331,7 @@ veryclean: check_user_notroot
 	rm -rf $(source_dir)/docs $(build_docs_dir) $(distrib_docs_dir)
 	rm -f $(source_dir)/README.md $(source_dir)/_quarto.yml
 	rm -f $(source_dir)/index.* $(source_dir)/favicon.ico
+	rm -f $(source_dir)/manifest.json
 	rm -rf $(source_dir)/website $(build_website_dir) $(distrib_website_dir)
 
 
