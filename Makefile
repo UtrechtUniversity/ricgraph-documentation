@@ -160,6 +160,7 @@ ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
 	@echo "Get the website files:"
 	cp -r $(ricgraph_dir)/website $(source_dir)
+	mv $(source_dir)/website/manifest.json-website $(source_dir)/website/manifest.json
 	@echo "Move favicon.ico."
 	mv $(source_dir)/website/images/icons/favicon.ico $(source_dir)/website
 endif
