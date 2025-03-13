@@ -27,6 +27,7 @@ project:
     - "docs/newsletters/*.md"
   resources:
     - "docs/images/icons/android/*"
+    - "docs/images/ricgraph-docs-screenshot-*"
   
 lang: en
 description-meta: "Ricgraph (Research in context graph) enables the exploration of researchers, teams, their results, collaborations, skills, projects, and the relations between these items."

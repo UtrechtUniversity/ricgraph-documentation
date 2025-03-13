@@ -32,6 +32,7 @@ project:
     - "*.md"
   resources:
     - "images/icons/android/*"
+    - "images/ricgraph-website-screenshot-*"
   
 lang: en
 description-meta: "Ricgraph (Research in context graph) enables the exploration of researchers, teams, their results, collaborations, skills, projects, and the relations between these items."

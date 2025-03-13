@@ -30,7 +30,7 @@ $h6-font-size: $font-size-base;
 
 /*-- scss:rules --*/
 body {
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 .keywords {
   display: none;
@@ -52,13 +52,13 @@ figcaption {
 /* Header modifications (also see above for font sizes) */
 /* Insert a line under h2 */
 h1, .h1 {
-    border-bottom: 2px solid $link-color;
-    padding-bottom: 10px;
+  border-bottom: 2px solid $link-color;
+  padding-bottom: 10px;
 }
 /* Remove the line under h2 */
 h2, .h2 {
-    border-bottom: 0px;
-    padding-bottom: 0px;
+  border-bottom: 0px;
+  padding-bottom: 0px;
 }
 h4, .h4 {
   font-weight: 400;
@@ -68,8 +68,8 @@ h5, .h5 {
   font-style: italic !important;
 }
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
-    margin-bottom: 0.2rem;
-    margin-top: 2rem !important;
+  margin-bottom: 0.2rem;
+  margin-top: 2rem !important;
 }
 /* End of Header modifications */
 
@@ -119,6 +119,10 @@ a {
 .sidebar-menu-container {
   padding-bottom: 0px;
 }
+
+nav.quarto-secondary-nav {
+  border-bottom: 0px;
+}
 /* Width of the sidebar, both collapsed and not collapsed.
 /* If you change this, also change $grid-sidebar-width above.
  */
@@ -140,33 +144,37 @@ body.docked .sidebar-navigation {
 img.sidebar-logo.py-0.d-lg-inline.d-none {
   display: block !important;
 }
-
 /* Footer stuff */
+body .nav-footer {
+  border-top: 0px;
+}
 .nav-footer a {
   color: $link-color;
 }
 .nav-footer {
-  display: block;
+  // display: block;
+  display: flex;
   text-align: left;
   font-size: 80%;
   line-height: 1.5; // default line-height for bootstrap
 }
-/*
 .nav-footer-left {
-  height: 0px;
+  // height: 0px;
+  margin-bottom: 0px;
 }
-*/
 .nav-footer-center {
   margin-top: 0px;
   margin-bottom: 0px;
   min-height: 0px;
   height: 0px;
+  flex: 0 0 0px;
 }
 .nav-footer-right {
   margin-top: 0px;
   margin-bottom: 0px;
   min-height: 0px;
   height: 0px;
+  flex: 0 0 0px;
 }
 /* End of Footer stuff */
 
