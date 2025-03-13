@@ -154,6 +154,7 @@ body .nav-footer {
 .nav-footer {
   // display: block;
   display: flex;
+  flex-wrap: nowrap;
   text-align: left;
   font-size: 80%;
   line-height: 1.5; // default line-height for bootstrap
