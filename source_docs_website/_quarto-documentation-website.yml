@@ -138,6 +138,7 @@ format:
       - ricgraph.scss
     mainfont: "Open Sans"
     toc: true
+    number-sections: true
     lightbox: true
     filters:
       - convert_scripts/set_webpage_title.lua
