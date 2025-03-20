@@ -98,9 +98,12 @@ format:
       - ../ricgraph.scss
     toc: true
     lightbox: true
+    #link-external-icon: true
+    link-external-newwindow: true
+    link-external-filter: 'ricgraph\.(eu|nl|com)(!.*\.pdf$)'
+    code-copy: true
     filters:
       - ../convert_scripts/set_webpage_title.lua
-      #- ../convert_scripts/fix_mdtohtml_links.lua
     # The font used on the webpages is determined by the 'fonts.' below and 
     # a setting in ricgraph.scss.
     # Android has Progressive Web Apps, see file manifest.json.

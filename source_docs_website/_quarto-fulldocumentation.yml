@@ -76,8 +76,6 @@ format:
     breaklines: true
     filters:
       - convert_scripts/fix_path_to_externalfiles.lua
-    #  - convert_scripts/fix_mdtopdf_links.lua
-    #  - convert_scripts/convert_htmltopdf_images.lua
     # Do not change '#XX.YY#' below, it will be modified by the Makefile.
     include-in-header:
       text: |
