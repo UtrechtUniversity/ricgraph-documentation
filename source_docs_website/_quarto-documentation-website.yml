@@ -142,7 +142,7 @@ format:
     lightbox: true
     #link-external-icon: true
     link-external-newwindow: true
-    link-external-filter: 'ricgraph\.(eu|nl|com)(!.*\.pdf$)'
+    link-external-filter: 'ricgraph\.(eu|nl|com)'
     filters:
       - convert_scripts/set_webpage_title.lua
     # The font used on the webpages is determined by the 'fonts.' below and 
