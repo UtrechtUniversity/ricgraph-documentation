@@ -74,8 +74,8 @@ website:
             contents:
               - section: "Installation options"
                 contents:
-                  - href: docs/ricgraph_containerized.md
                   - href: docs/ricgraph_as_server.md
+                  - href: docs/ricgraph_containerized.md
               - section: "Graph database backends"
                 contents:
                   - text: "Ricgraph with Neo4j"
