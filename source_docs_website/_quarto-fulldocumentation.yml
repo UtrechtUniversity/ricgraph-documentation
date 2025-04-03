@@ -53,11 +53,12 @@ format:
   pdf:
     documentclass: scrreprt
     papersize: a4
-    # The following does not work unfortunately since 'longtable' 
+    # I use script convert_longtable_to_tabularx.lua to make twocolum
+    # possible. Otherwise twocolumn cannot be used since 'longtable' 
     # (quarto's LaTeX table environment) does not work in 2-column mode.
-    # classoption: 
-    #   - landscape
-    #   - twocolumn
+    classoption: 
+      - landscape
+      - twocolumn
     fig-format: png
     fig-pos: "H"
     # The table of contents is generated in file index.md.
@@ -82,25 +83,29 @@ format:
     breaklines: true
     filters:
       - convert_scripts/fix_path_to_externalfiles.lua
+      - convert_scripts/convert_longtable_to_tabularx.lua
     # Do not change '#XX.YY#' below, it will be modified by the Makefile.
     include-in-header:
       text: |
         \usepackage{scrlayer-scrpage}
+        \usepackage{tabularx}
         \pagestyle{scrheadings}
         \cfoot{}
         \ifoot{\parbox[t]{\dimexpr\textwidth-1cm\relax}{
           \setstretch{0.6}
-          \textrm{\footnotesize
+          \textnormal{\footnotesize
           This is documentation for version #XX.YY# of Ricgraph - Research 
           in context graph.
+          It is a pdf of 
+          \href{https://docs.ricgraph.eu}{docs.ricgraph.eu}. 
           For more information about Ricgraph, Ricgraph Explorer, and the
           Ricgraph REST API, please read the reference publication 
           \href{https://doi.org/10.1016/j.softx.2024.101736}
-          {https://doi.org/10.1016/j.softx.2024.101736}, visit the website 
+          {doi.org/10.1016/j.softx.2024.101736}, visit the website 
           \href{https://www.ricgraph.eu}{www.ricgraph.eu}, 
           or go to the GitHub
           repository \href{https://github.com/UtrechtUniversity/ricgraph}
-          {https://github.com/UtrechtUniversity/ricgraph.}}}}
+          {github.com/UtrechtUniversity/ricgraph.}}}}
         \ofoot{\pagemark} 
         % For UU yellow bar at the left and the logo.
         \usepackage[cmyk]{xcolor}

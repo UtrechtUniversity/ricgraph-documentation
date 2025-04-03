@@ -22,14 +22,15 @@ function Link(el)
   end
 
   if el.target:match('.+/[^/]+%.mp4$') then
-    -- For mp4, it is sufficient to only prepend it with 'docs/'.
-    el.target = "docs/" .. el.target
+    -- For all others, we do it for safety.
+    el.target = "https://docs.ricgraph.eu/docs/" .. el.target
     return el
   end
 
 
   if el.target:match('.+/[^/]+%.md$') then
-    el.target = "docs/" .. el.target
+    -- For all others, we do it for safety.
+    el.target = "https://docs.ricgraph.eu/docs/" .. el.target
     el.target = el.target:gsub('%.md$', '.html')
     return el
   end
