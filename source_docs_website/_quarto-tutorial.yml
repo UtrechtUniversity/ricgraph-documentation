@@ -64,16 +64,18 @@ format:
         \ifoot{\parbox[t]{\dimexpr\textwidth-1cm\relax}{
           \setstretch{0.6}
           \textrm{\footnotesize
-          This is documentation for version #XX.YY# of Ricgraph - Research 
-          in context graph.
+          This is the tutorial for version #XX.YY# of Ricgraph - Research 
+          in context graph. Go to 
+          \href{https://docs.ricgraph.eu}{docs.ricgraph.eu}
+          for the full documentation.
           For more information about Ricgraph, Ricgraph Explorer, and the
           Ricgraph REST API, please read the reference publication 
           \href{https://doi.org/10.1016/j.softx.2024.101736}
-          {https://doi.org/10.1016/j.softx.2024.101736}, visit the website 
+          {doi.org/10.1016/j.softx.2024.101736}, visit the website 
           \href{https://www.ricgraph.eu}{www.ricgraph.eu}, 
           or go to the GitHub
           repository \href{https://github.com/UtrechtUniversity/ricgraph}
-          {https://github.com/UtrechtUniversity/ricgraph.}}}}
+          {github.com/UtrechtUniversity/ricgraph.}}}}
         \ofoot{\pagemark} 
         % For UU yellow bar at the left and the logo.
         \usepackage[cmyk]{xcolor}
