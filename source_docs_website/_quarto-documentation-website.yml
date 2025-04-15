@@ -141,6 +141,7 @@ format:
     number-sections: true
     lightbox: true
     filters:
+      - convert_scripts/renumber_sections.lua
       - convert_scripts/set_webpage_title.lua
     # The font used on the webpages is determined by the 'fonts.' below and 
     # a setting in ricgraph.scss.
