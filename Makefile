@@ -54,7 +54,7 @@ ricgraph_docs_file := ricgraph_documentation-v$(ricgraph_version)-{0..3}.tar
 distrib_docs_file := $(distrib_docs_dir)/$(ricgraph_docs_file)
 ricgraph_docs_path := $(ricgraph_rep_download)/raw/main/$(distrib_docs_file)
 
-ricgraph_website_file := ricgraph_website-v$(ricgraph_version).tar
+ricgraph_website_file := ricgraph_website-v$(ricgraph_version).tar.gz
 distrib_website_file := $(distrib_website_dir)/$(ricgraph_website_file)
 ricgraph_website_path := $(ricgraph_rep_download)/raw/main/$(distrib_website_file)
 
@@ -230,7 +230,8 @@ ifeq ($(shell test -d $(build_docs_dir) && echo true),true)
 	$(call are_you_sure)
 	@echo ""
 	rm -rf $(distrib_docs_dir); mkdir $(distrib_docs_dir)
-	@# --multi-volume in needed since GitHub does not accept files > 100MB.
+	@# --multi-volume is needed since GitHub does not accept files > 100MB.
+	@# Note that this option does not allow compressed archives.
 	tar --multi-volume --tape-length=75M -c --file=$(distrib_docs_file) $(build_docs_dir)
 else
 	@echo "Error, directory $(build_docs_dir) does not exist."
@@ -248,8 +249,7 @@ ifeq ($(shell test -d $(build_website_dir) && echo true),true)
 	$(call are_you_sure)
 	@echo ""
 	rm -rf $(distrib_website_dir); mkdir $(distrib_website_dir)
-	@# --multi-volume in needed since GitHub does not accept files > 100MB.
-	tar cf $(distrib_website_file) $(build_website_dir)
+	tar -czf $(distrib_website_file) $(build_website_dir)
 else
 	@echo "Error, directory $(build_website_dir) does not exist."
 endif
