@@ -321,7 +321,7 @@ install_website: check_user_root
 	bash -c "tar xf ../$(ricgraph_website_file)"; \
 	mv $(build_website_dir)/* .; \
 	rmdir $(build_website_dir); \
-	rm ../ricgraph_website-*.tar
+	rm ../ricgraph_website-*.tar.gz
 	chown -R root:root $(webserver_dir)/ricgraph-website
 	chmod -R go-w $(webserver_dir)/ricgraph-website
 	@echo "Restarting webserver:"
