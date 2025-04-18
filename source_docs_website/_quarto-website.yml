@@ -61,12 +61,12 @@ website:
         href: learn-more-about-ricgraph.md
       - text: "Read more"
         href: read-more-about-ricgraph.md
-      - text: "Read documentation"
-        href: "https://docs.ricgraph.eu"
       - text: "Get Ricgraph"
         href: get-ricgraph.md
       - text: "Contact"
         href: contact.md
+      - text: "Read documentation"
+        href: "https://docs.ricgraph.eu"
     footer: >
           [![DOI Ricgraph software](https://img.shields.io/badge/software-10.5281/zenodo.7524314-blue?logo=doi&logoColor=fff)](https://doi.org/10.5281/zenodo.7524314)
           [![DOI reference Ricgraph publication](https://img.shields.io/badge/publication-10.1016%2Fj.softx.2024.101736-blue?logo=doi&logoColor=fff)](https://doi.org/10.1016/j.softx.2024.101736)

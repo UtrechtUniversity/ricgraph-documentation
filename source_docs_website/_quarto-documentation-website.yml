@@ -90,6 +90,18 @@ website:
                 href: docs/ricgraph_comparison.md
               - text: "Read about known bugs"
                 href: docs/ricgraph_known_bugs.md
+              - section: "Don't look here &#9786;"
+                contents:
+                  - text: "Table of contents"
+                    href: docs/ricgraph_toc_documentation.md
+                  - text: "Index"
+                    href: docs/ricgraph_index_documentation.md
+                  - text: "REST API generated doc"
+                    href: docs/ricgraph_restapi_gendoc.md
+                  - text: "Newsletter April 2024"
+                    href: docs/newsletters/240400-Ricgraph_newsletter_April_2024.md
+                  - text: "Newsletter July 2024"
+                    href: docs/newsletters/240700-Ricgraph_newsletter_July_2024.md
       - text: "Tutorial pdf"
         href: ricgraph_tutorial.pdf
       - text: "Full documentation pdf"
