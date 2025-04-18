@@ -7,6 +7,9 @@
 -- For md files, we go the corresponding html file. 
 -- Note that all these (resulting) files are assumed to be present, 
 -- which they will be after creating the documentation website.
+-- -------------------------------------------------------------------------
+-- Rik D.T. Janssen, original version April, 2025.
+-- -------------------------------------------------------------------------
 
 function Link(el)
   if el.target:match("^%a+://")  -- Not a web URL (e.g., http:// or https://)
