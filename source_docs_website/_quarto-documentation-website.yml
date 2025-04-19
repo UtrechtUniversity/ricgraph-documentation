@@ -54,6 +54,8 @@ website:
         href: docs/ricgraph_documentation_intro.md
       - text: "Tutorial Ricgraph"
         href: docs/ricgraph_tutorial.md
+      - text: "Contact"
+        href: README.md#contact
       - section: "Full documentation"
         contents:
           - text: "Readme Ricgraph"
@@ -90,6 +92,11 @@ website:
                 href: docs/ricgraph_comparison.md
               - text: "Read about known bugs"
                 href: docs/ricgraph_known_bugs.md
+              # The following section is necessary, because it ensures
+              # that the left menubar is present when you click on one
+              # of these items. Otherwise, without this, there is no way
+              # to get the left sidebar, which gives a weird user
+              # experience.
               - section: "Don't look here &#9786;"
                 contents:
                   - text: "Table of contents"
