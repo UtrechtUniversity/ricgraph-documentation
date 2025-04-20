@@ -146,7 +146,6 @@ format:
     theme: 
       - cosmo
       - ricgraph.scss
-    mainfont: "Open Sans"
     toc: true
     number-sections: true
     lightbox: true
