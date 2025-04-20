@@ -136,6 +136,7 @@ makefile_variables:
 # ![](path/to/file){width=40%}
 # Note that it only works when given as above order.
 
+
 get_docs: check_user_notroot
 ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
@@ -155,6 +156,7 @@ ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
 	@sed -i '1,/<!--- Mark to remove everything up to here --->/d' $(source_dir)/README.md
 endif
 
+
 get_website: check_user_notroot
 ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
@@ -163,6 +165,12 @@ ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	mv $(source_dir)/website/manifest.json-website $(source_dir)/website/manifest.json
 	@echo "Move favicon.ico."
 	mv $(source_dir)/website/images/icons/favicon.ico $(source_dir)/website
+	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
+	@for file in ${source_dir}/website/*.md; do \
+    		sed -i -E 's/<img\s+alt="([^"]*)"\s+src="([^"]*)"\s+width="([^"]*)%">/  ![\1](\2){width=\3%}/g' "$$file"; \
+    		sed -i -E 's/<img\s+src="([^"]*)"\s+alt="([^"]*)"\s+width="([^"]*)%">/  ![\2](\1){width=\3%}/g' "$$file"; \
+    		sed -i -E 's/<img\s+src="([^"]*)"\s+width="([^"]*)%">/  ![](\1){width=\2%}/g' "$$file"; \
+	done
 endif
 
 
