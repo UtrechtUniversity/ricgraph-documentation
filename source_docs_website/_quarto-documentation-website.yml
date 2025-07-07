@@ -56,6 +56,8 @@ website:
         href: docs/ricgraph_tutorial.md
       - text: "Contact"
         href: README.md#contact
+      - text: "Pilot Open Ricgraph demo server"
+        href: "https://www.ricgraph.eu/pilot-project-open-ricgraph-demo-server.html"
       - section: "Full documentation"
         contents:
           - text: "Readme Ricgraph"
