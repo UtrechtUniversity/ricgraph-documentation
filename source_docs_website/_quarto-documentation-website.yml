@@ -69,7 +69,7 @@ website:
           - text: "Explore"
             href: docs/ricgraph_explorer.md
           - text: "Read publications, presentations, and more"
-            href: docs/ricgraph_pubs_pres_news_use_ment.md
+            href: docs/ricgraph_outreach.md
           - section: "More options"
             contents:
               - section: "Installation options"
