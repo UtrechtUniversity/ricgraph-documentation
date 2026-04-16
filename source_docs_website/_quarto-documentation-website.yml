@@ -68,7 +68,7 @@ website:
             href: docs/ricgraph_harvest_scripts.md
           - text: "Explore"
             href: docs/ricgraph_explorer.md
-          - text: "Read publications, presentations, and more"
+          - text: "Outreach activities"
             href: docs/ricgraph_outreach.md
           - section: "More options"
             contents:
@@ -111,6 +111,12 @@ website:
                     href: docs/newsletters/240400-Ricgraph_newsletter_April_2024.md
                   - text: "Newsletter July 2024"
                     href: docs/newsletters/240700-Ricgraph_newsletter_July_2024.md
+                  - text: "Newsletter June 2025"
+                    href: docs/newsletters/250600-Ricgraph_newsletter_June_2025.md
+                  - text: "Newsletter October 2025"
+                    href: docs/newsletters/251000-Ricgraph_newsletter_Oct_2025.md
+                  - text: "Newsletter March 2026"
+                    href: docs/newsletters/260300-Ricgraph_newsletter_March_2026.md
       - text: "Tutorial pdf"
         href: ricgraph_tutorial.pdf
       - text: "Full documentation pdf"

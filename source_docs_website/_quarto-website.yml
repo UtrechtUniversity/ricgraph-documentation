@@ -57,6 +57,8 @@ website:
     contents:
       - text: "What is Ricgraph?"
         href: what-is-ricgraph.md
+      - text: "Ricgraph news"
+        href: ricgraph-news.md
       - text: "Learn more"
         href: learn-more-about-ricgraph.md
       - text: "Read more"

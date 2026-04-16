@@ -235,8 +235,8 @@ ifeq ($(shell test -d $(build_docs_dir) && echo true),true)
 	@echo "You can set the version using the command line parameter 'ricgraph_version',"
 	@echo "e.g. 'make ricgraph_version=[version without v] create_distrib_documentation'"
 	@echo ""
-	$(call are_you_sure)
-	@echo ""
+	# $(call are_you_sure)
+	# @echo ""
 	rm -rf $(distrib_docs_dir); mkdir $(distrib_docs_dir)
 	@# --multi-volume is needed since GitHub does not accept files > 100MB.
 	@# Note that this option does not allow compressed archives.
@@ -254,8 +254,8 @@ ifeq ($(shell test -d $(build_website_dir) && echo true),true)
 	@echo "You can set the version using the command line parameter 'ricgraph_version',"
 	@echo "e.g. 'make ricgraph_version=[version without v] create_distrib_website'"
 	@echo ""
-	$(call are_you_sure)
-	@echo ""
+	# $(call are_you_sure)
+	# @echo ""
 	rm -rf $(distrib_website_dir); mkdir $(distrib_website_dir)
 	tar -czf $(distrib_website_file) $(build_website_dir)
 else
