@@ -1,0 +1,29 @@
+#
+# RDTJ Nginx config file for Ubuntu 22.04, May 11, 2026
+#
+
+server {
+    listen 80;
+    server_name docs.ricgraph.eu
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+
+    # To request a certificate, type
+    # certbot --nginx -d WEBSERVER_NAME [-d WEBSERVER2_NAME]
+    # You don't need to comment & then uncomment a line (as with Apache).
+
+    server_name docs.ricgraph.eu;
+
+    root /var/www/html/ricgraph-documentation;
+    index index.html;
+
+    access_log /var/log/nginx/docs_ricgraph_eu_access.log;
+    error_log  /var/log/nginx/docs_ricgraph_eu_error.log warn;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
