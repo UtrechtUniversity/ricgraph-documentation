@@ -57,6 +57,14 @@ website:
     contents:
       - text: "What is Ricgraph?"
         href: what-is-ricgraph.md
+      - text: "Collaborations with Ricgraph"
+        href: collaborations-with-ricgraph.md
+      - text: "Open science with Ricgraph"
+        href: open-science-with-ricgraph.md
+      - text: "Enhancing with Ricgraph"
+        href: enhancing-with-ricgraph.md
+      - text: "Pilot Open Ricgraph demo server"
+        href: pilot-project-open-ricgraph-demo-server.md
       - text: "Ricgraph news"
         href: ricgraph-news.md
       - text: "Learn more"
@@ -67,8 +75,6 @@ website:
         href: get-ricgraph.md
       - text: "Contact"
         href: contact.md
-      - text: "Pilot Open Ricgraph demo server"
-        href: pilot-project-open-ricgraph-demo-server.md
       - text: "Read documentation"
         href: "https://docs.ricgraph.eu"
     footer: >
