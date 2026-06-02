@@ -55,9 +55,13 @@ website:
       - text: "Tutorial Ricgraph"
         href: docs/ricgraph_tutorial.md
       - text: "Contact"
-        href: README.md#contact
+        href: "https://www.ricgraph.eu/contact.html"
       - text: "Pilot Open Ricgraph demo server"
         href: "https://www.ricgraph.eu/pilot-project-open-ricgraph-demo-server.html"
+      - text: "Ricgraph Explorer: user interface"
+        href: docs/ricgraph_explorer.md
+      - text: "Outreach activities"
+        href: docs/ricgraph_outreach.md
       - section: "Full documentation"
         contents:
           - text: "Readme Ricgraph"
@@ -66,10 +70,6 @@ website:
             href: docs/ricgraph_install_configure.md
           - text: "Harvest sources"
             href: docs/ricgraph_harvest_scripts.md
-          - text: "Explore"
-            href: docs/ricgraph_explorer.md
-          - text: "Outreach activities"
-            href: docs/ricgraph_outreach.md
           - section: "More options"
             contents:
               - section: "Installation options"
