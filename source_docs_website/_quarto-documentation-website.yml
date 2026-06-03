@@ -52,75 +52,73 @@ website:
     contents:
       - text: "Ricgraph docs intro"
         href: docs/ricgraph_documentation_intro.md
-      - text: "Tutorial Ricgraph"
-        href: docs/ricgraph_tutorial.md
-      - text: "Contact"
-        href: "https://www.ricgraph.eu/contact.html"
+      #- text: "Tutorial Ricgraph"
+      #  href: docs/ricgraph_tutorial.md
       - text: "Pilot Open Ricgraph demo server"
         href: "https://www.ricgraph.eu/pilot-project-open-ricgraph-demo-server.html"
+      - text: "Install"
+        href: docs/ricgraph_install_configure.md
+      - text: "Harvest sources"
+        href: docs/ricgraph_harvest_scripts.md
       - text: "Ricgraph Explorer: user interface"
         href: docs/ricgraph_explorer.md
       - text: "Outreach activities"
         href: docs/ricgraph_outreach.md
-      - section: "Full documentation"
+      - section: "Detailed documentation"
         contents:
-          - text: "Readme Ricgraph"
-            href: README.md
-          - text: "Install"
-            href: docs/ricgraph_install_configure.md
-          - text: "Harvest sources"
-            href: docs/ricgraph_harvest_scripts.md
-          - section: "More options"
+          - section: "Installation options"
             contents:
-              - section: "Installation options"
-                contents:
-                  - href: docs/ricgraph_as_server.md
-                  - href: docs/ricgraph_containerized.md
-              - section: "Graph database backends"
-                contents:
-                  - text: "Ricgraph with Neo4j"
-                    href: docs/ricgraph_backend_neo4j.md
-                  - text: "Ricgraph with Memgraph"
-                    href: docs/ricgraph_backend_memgraph.md
-              - text: "Use the Ricgraph REST API"
-                href: docs/ricgraph_restapi.md
-              - text: "Read about details"
-                href: docs/ricgraph_details.md
-              - text: "Run miscellaneous scripts"
-                href: docs/ricgraph_misc_scripts.md
-              - text: "Write Ricgraph scripts"
-                href: docs/ricgraph_script_writing.md
-              - text: "Compare Ricgraph to others"
-                href: docs/ricgraph_comparison.md
-              - text: "Read about known bugs"
-                href: docs/ricgraph_known_bugs.md
-              # The following section is necessary, because it ensures
-              # that the left menubar is present when you click on one
-              # of these items. Otherwise, without this, there is no way
-              # to get the left sidebar, which gives a weird user
-              # experience.
-              - section: "Don't look here &#9786;"
-                contents:
-                  - text: "Table of contents"
-                    href: docs/ricgraph_toc_documentation.md
-                  - text: "Index"
-                    href: docs/ricgraph_index_documentation.md
-                  - text: "REST API generated doc"
-                    href: docs/ricgraph_restapi_gendoc.md
-                  - text: "Newsletter April 2024"
-                    href: docs/newsletters/240400-Ricgraph_newsletter_April_2024.md
-                  - text: "Newsletter July 2024"
-                    href: docs/newsletters/240700-Ricgraph_newsletter_July_2024.md
-                  - text: "Newsletter June 2025"
-                    href: docs/newsletters/250600-Ricgraph_newsletter_June_2025.md
-                  - text: "Newsletter October 2025"
-                    href: docs/newsletters/251000-Ricgraph_newsletter_Oct_2025.md
-                  - text: "Newsletter March 2026"
-                    href: docs/newsletters/260300-Ricgraph_newsletter_March_2026.md
-      - text: "Tutorial pdf"
-        href: ricgraph_tutorial.pdf
+              - href: docs/ricgraph_as_server.md
+              - href: docs/ricgraph_containerized.md
+          - section: "Graph database backends"
+            contents:
+              - text: "Ricgraph with Neo4j"
+                href: docs/ricgraph_backend_neo4j.md
+              - text: "Ricgraph with Memgraph"
+                href: docs/ricgraph_backend_memgraph.md
+          - text: "Use the Ricgraph REST API"
+            href: docs/ricgraph_restapi.md
+          - text: "Read about details"
+            href: docs/ricgraph_details.md
+          - text: "Run miscellaneous scripts"
+            href: docs/ricgraph_misc_scripts.md
+          - text: "Write Ricgraph scripts"
+            href: docs/ricgraph_script_writing.md
+          - text: "Compare Ricgraph to others"
+            href: docs/ricgraph_comparison.md
+          - text: "Read about known bugs"
+            href: docs/ricgraph_known_bugs.md
+          # The following section is necessary, because it ensures
+          # that the left menubar is present when you click on one
+          # of these items. Otherwise, without this, there is no way
+          # to get the left sidebar, which gives a weird user
+          # experience.
+          - section: "Don't look here &#9786;"
+            contents:
+              - text: "Readme Ricgraph"
+                href: README.md
+              - text: "Table of contents"
+                href: docs/ricgraph_toc_documentation.md
+              - text: "Index"
+                href: docs/ricgraph_index_documentation.md
+              - text: "REST API generated doc"
+                href: docs/ricgraph_restapi_gendoc.md
+              - text: "Newsletter April 2024"
+                href: docs/newsletters/240400-Ricgraph_newsletter_April_2024.md
+              - text: "Newsletter July 2024"
+                href: docs/newsletters/240700-Ricgraph_newsletter_July_2024.md
+              - text: "Newsletter June 2025"
+                href: docs/newsletters/250600-Ricgraph_newsletter_June_2025.md
+              - text: "Newsletter October 2025"
+                href: docs/newsletters/251000-Ricgraph_newsletter_Oct_2025.md
+              - text: "Newsletter March 2026"
+                href: docs/newsletters/260300-Ricgraph_newsletter_March_2026.md
+      #- text: "Tutorial pdf"
+      #  href: ricgraph_tutorial.pdf
       - text: "Full documentation pdf"
         href: ricgraph_fulldocumentation.pdf
+      - text: "Contact"
+        href: "https://www.ricgraph.eu/contact.html"
     footer: >
           [![DOI Ricgraph software](https://img.shields.io/badge/software-10.5281/zenodo.7524314-blue?logo=doi&logoColor=fff)](https://doi.org/10.5281/zenodo.7524314)
           [![DOI reference Ricgraph publication](https://img.shields.io/badge/publication-10.1016%2Fj.softx.2024.101736-blue?logo=doi&logoColor=fff)](https://doi.org/10.1016/j.softx.2024.101736)

@@ -29,7 +29,8 @@ book:
     - index.md
     # The Makefile will add a part for the full documentation.
     - docs/ricgraph_documentation_intro.md
-    - README.md
+    # In the Makefile, README.md will be copied to index.md.
+    # - README.md
     - docs/ricgraph_install_configure.md
     - docs/ricgraph_harvest_scripts.md
     - docs/ricgraph_explorer.md
@@ -53,7 +54,7 @@ format:
     documentclass: scrreprt
     papersize: a4
     # I use script convert_longtable_to_tabularx.lua to make twocolum
-    # possible. Otherwise twocolumn cannot be used since 'longtable' 
+    # possible. Otherwise, twocolumn cannot be used since 'longtable'
     # (quarto's LaTeX table environment) does not work in 2-column mode.
     classoption: 
       - landscape

@@ -72,7 +72,7 @@ help:
 	@echo "- make get_docs: get the doc files from Ricgraph."
 	@echo "- make get_website: get the website files from Ricgraph."
 	@echo "- make build_documentation_website: build the documentation website."
-	@echo "- make build_tutorial_pdf: build the documentation pdf with the tutorial."
+	# @echo "- make build_tutorial_pdf: build the documentation pdf with the tutorial."
 	@echo "- make build_fulldoc_pdf: build the pdf with the full documentation."
 	@echo "- make build_website: build the website."
 	@echo "- make create_distrib_documentation: create a tar file to distribute."
@@ -186,16 +186,16 @@ build_documentation_website: get_docs check_user_notroot
 # [25-2-2025] we cannot put 'getdocs' in the dependencies of this target.
 # Getting files must be done separately, otherwise Quarto
 # reports a missing '$'. I think is is a bug in Quarto.
-build_tutorial_pdf: check_user_notroot
-	@if [ ! -d $(source_dir)/docs ]; then echo "Error, docs-dir does not exist, run 'make get_docs' first."; exit 1; fi
-	rm -f $(build_docs_dir)/ricgraph_tutorial.pdf
-	cd $(source_dir); cp _quarto-tutorial.yml _quarto.yml
-	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
-	cd $(source_dir); cp docs/ricgraph_tutorial.md index.md
-	@cd $(source_dir); \
-	sed -i 's|(images/|(docs/images/|g' index.md; \
-	sed -i 's|(\([^#]*\)\.md#\(.*\)|(https://docs.ricgraph.eu/docs/\1.html#\2|g' index.md
-	cd $(source_dir); quarto render --output ricgraph_tutorial.pdf
+#build_tutorial_pdf: check_user_notroot
+#	@if [ ! -d $(source_dir)/docs ]; then echo "Error, docs-dir does not exist, run 'make get_docs' first."; exit 1; fi
+#	rm -f $(build_docs_dir)/ricgraph_tutorial.pdf
+#	cd $(source_dir); cp _quarto-tutorial.yml _quarto.yml
+#	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
+#	cd $(source_dir); cp docs/ricgraph_tutorial.md index.md
+#	@cd $(source_dir); \
+#	sed -i 's|(images/|(docs/images/|g' index.md; \
+#	sed -i 's|(\([^#]*\)\.md#\(.*\)|(https://docs.ricgraph.eu/docs/\1.html#\2|g' index.md
+#	cd $(source_dir); quarto render --output ricgraph_tutorial.pdf
 
 
 # [25-2-2025] we cannot put 'getdocs' in the dependencies of this target.
@@ -206,7 +206,8 @@ build_fulldoc_pdf: check_user_notroot
 	rm -f $(build_docs_dir)/ricgraph_fulldocumentation.pdf
 	cd $(source_dir); cp _quarto-fulldocumentation.yml _quarto.yml
 	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
-	cd $(source_dir); cp docs/ricgraph_tutorial.md index.md
+	#cd $(source_dir); cp docs/ricgraph_tutorial.md index.md
+	cd $(source_dir); cp README.md index.md
 	@cd $(source_dir); \
 	sed -i 's|(ricgraph_|(docs/ricgraph_|g' index.md; \
 	sed -i 's|(images/|(docs/images/|g' index.md; \
@@ -266,7 +267,7 @@ endif
 build_all_documentation:
 	make get_docs
 	make build_documentation_website
-	make build_tutorial_pdf
+	#make build_tutorial_pdf
 	make build_fulldoc_pdf
 	make create_distrib_documentation
 	@echo ""
