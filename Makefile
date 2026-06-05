@@ -13,6 +13,7 @@
 # For make, see https://www.gnu.org/software/make.
 #
 # Original version Rik D.T. Janssen, February 2025.
+# Updated version Rik D.T. Janssen, June 2026.
 #
 # ########################################################################
 
@@ -49,7 +50,7 @@ ricgraph_rep_download := https://github.com/UtrechtUniversity/ricgraph-documenta
 # 'ricgraph_dir' should be done differently. It is relative to the directory
 # of this Makefile.
 ricgraph_dir := ../ricgraph
-# The '-{0..5}' is to create multiple filenames when tarring.
+# The '-{0..x}' is to create multiple filenames (0 to x) when tarring.
 ricgraph_docs_file := ricgraph_documentation-v$(ricgraph_version)-{0..3}.tar
 distrib_docs_file := $(distrib_docs_dir)/$(ricgraph_docs_file)
 ricgraph_docs_path := $(ricgraph_rep_download)/raw/main/$(distrib_docs_file)
@@ -72,7 +73,7 @@ help:
 	@echo "- make get_docs: get the doc files from Ricgraph."
 	@echo "- make get_website: get the website files from Ricgraph."
 	@echo "- make build_documentation_website: build the documentation website."
-	# @echo "- make build_tutorial_pdf: build the documentation pdf with the tutorial."
+	@#echo "- make build_tutorial_pdf: build the documentation pdf with the tutorial."
 	@echo "- make build_fulldoc_pdf: build the pdf with the full documentation."
 	@echo "- make build_website: build the website."
 	@echo "- make create_distrib_documentation: create a tar file to distribute."
@@ -175,9 +176,16 @@ endif
 
 
 build_documentation_website: get_docs check_user_notroot
-	rm -rf $(build_docs_dir)/docs $(build_docs_dir)/site_libs
-	rm -f $(build_docs_dir)/*.html $(build_docs_dir)/search.json
-	rm -f $(build_docs_dir)/favicon.ico
+	rm -rf $(build_docs_dir)
+	@cd $(source_dir); \
+	echo "<html xmlns='http://www.w3.org/1999/xhtml'>" > index.html; \
+  	echo "  <head>" >> index.html; \
+  	echo "    <title>Redirect to ricgraph_documentation_intro.html</title>" >> index.html; \
+    echo "    <meta http-equiv='refresh' content='0;URL=docs/ricgraph_documentation_intro.html' />" >> index.html; \
+  	echo "  </head>" >> index.html; \
+  	echo "  <body>" >> index.html; \
+  	echo "  </body>" >> index.html; \
+	echo "</html>" >> index.html
 	cd $(source_dir); cp _quarto-documentation-website.yml _quarto.yml
 	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
 	cd $(source_dir); quarto render
@@ -224,6 +232,15 @@ build_fulldoc_pdf: check_user_notroot
 
 build_website: get_website check_user_notroot
 	rm -rf $(build_website_dir)
+	@cd $(source_dir)/website; \
+	echo "<html xmlns='http://www.w3.org/1999/xhtml'>" > index.html; \
+  	echo "  <head>" >> index.html; \
+    echo "    <title>Redirect to what-is-ricgraph.html</title>" >> index.html; \
+    echo "    <meta http-equiv='refresh' content='0;URL=what-is-ricgraph.html' />" >> index.html; \
+  	echo "  </head>" >> index.html; \
+  	echo "  <body>" >> index.html; \
+  	echo "  </body>" >> index.html; \
+	echo "</html>" >> index.html
 	cd $(source_dir); cp _quarto-website.yml website/_quarto.yml
 	cd $(source_dir)/website; quarto render
 
@@ -236,8 +253,8 @@ ifeq ($(shell test -d $(build_docs_dir) && echo true),true)
 	@echo "You can set the version using the command line parameter 'ricgraph_version',"
 	@echo "e.g. 'make ricgraph_version=[version without v] create_distrib_documentation'"
 	@echo ""
-	# $(call are_you_sure)
-	# @echo ""
+	@# $(call are_you_sure)
+	@# @echo ""
 	rm -rf $(distrib_docs_dir); mkdir $(distrib_docs_dir)
 	@# --multi-volume is needed since GitHub does not accept files > 100MB.
 	@# Note that this option does not allow compressed archives.
@@ -255,8 +272,8 @@ ifeq ($(shell test -d $(build_website_dir) && echo true),true)
 	@echo "You can set the version using the command line parameter 'ricgraph_version',"
 	@echo "e.g. 'make ricgraph_version=[version without v] create_distrib_website'"
 	@echo ""
-	# $(call are_you_sure)
-	# @echo ""
+	@# $(call are_you_sure)
+	@# @echo ""
 	rm -rf $(distrib_website_dir); mkdir $(distrib_website_dir)
 	tar -czf $(distrib_website_file) $(build_website_dir)
 else
@@ -267,7 +284,7 @@ endif
 build_all_documentation:
 	make get_docs
 	make build_documentation_website
-	#make build_tutorial_pdf
+	@#make build_tutorial_pdf
 	make build_fulldoc_pdf
 	make create_distrib_documentation
 	@echo ""

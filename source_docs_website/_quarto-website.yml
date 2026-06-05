@@ -27,20 +27,26 @@ project:
   output-dir: ../../build_website
   type: website
   render:
-    # The first here will be referred to in 'index.html'.
-    - what-is-ricgraph.md
+    # index.html is created in the Makefile.
+    - index.html
     - "*.md"
   resources:
     - "images/icons/android/*"
+    - "images/icons/ios/*"
     - "images/ricgraph-website-screenshot-*"
   
 lang: en
-description-meta: "Ricgraph (Research in context graph) enables the exploration of researchers, teams, their results, collaborations, skills, projects, and the relations between these items."
+description-meta: "Ricgraph (Research in context graph): explore collaborations, open science, researchers, teams, research results, and (sub-)organizations with a graph"
 author-meta: "Rik D.T. Janssen"
-# Meta 'keywords' is at the end of this file.
+# Don't do keywords, they seem to be ignored by all major search engines.
+# keywords:
+#  - "Research in context graph"
+# [etc].
 
 website:
-  title: "Website Ricgraph - Research in context graph"
+  # The page title is created with 'set_webpage_title.lua' below from the
+  # <h1> header of the page. The following text will be appended to it.
+  title: "Research in context graph"
   favicon: favicon.ico
   search: true
   back-to-top-navigation: true
@@ -57,7 +63,6 @@ website:
     contents:
       - text: "What is Ricgraph?"
         href: what-is-ricgraph.md
-      # - section: "Application areas"
       - section: "Ricgraph's uniqueness"
         contents:
         - text: "Collaborations with Ricgraph"
@@ -122,24 +127,3 @@ format:
           <link rel='apple-touch-icon' sizes='120x120' href='/images/icons/ios/ricgraph-icon-120x120.png'>
           <link rel='apple-touch-icon' sizes='152x152' href='/images/icons/ios/ricgraph-icon-152x152.png'>
           <link rel='apple-touch-icon' sizes='180x180' href='/images/icons/ios/ricgraph-icon-180x180.png'>
-
-keywords:
-  - "Research in context graph"
-  - "Ricgraph"
-  - "Ricgraph Explorer"
-  - "Ricgraph REST API"
-  - "Data enrichment"
-  - "Data harvesting"
-  - "Data linking"
-  - "Enrichment"
-  - "Graph"
-  - "Graph database"
-  - "Harvest"
-  - "Harvest data"
-  - "Harvester"
-  - "Knowledge graph"
-  - "Linked data"
-  - "Metadata"
-  - "Utrecht University"
-  - "Visualization"
-
