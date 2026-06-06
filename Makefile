@@ -43,6 +43,14 @@ ricgraph_rep_download := https://github.com/UtrechtUniversity/ricgraph-documenta
 # 'ricgraph_dir' should be done differently. It is relative to the directory
 # of this Makefile.
 ricgraph_dir := ../ricgraph
+
+# Note that the Ricgraph version number is also used for the website.
+ifeq ($(shell test -f $(ricgraph_dir)/README.md && echo true),true)
+	ricgraph_version := $(shell sed -n 's/.*for version \([0-9.]*\) of Ricgraph.*/\1/p' $(ricgraph_dir)/README.md)
+else
+	ricgraph_version := [not_set]
+endif
+
 # The '-{0..x}' is to create multiple filenames (0 to x) when tarring.
 ricgraph_docs_file := ricgraph_documentation-v$(ricgraph_version)-{0..3}.tar
 distrib_docs_file := $(distrib_docs_dir)/$(ricgraph_docs_file)
@@ -51,13 +59,6 @@ ricgraph_docs_path := $(ricgraph_rep_download)/raw/main/$(distrib_docs_file)
 ricgraph_website_file := ricgraph_website-v$(ricgraph_version).tar.gz
 distrib_website_file := $(distrib_website_dir)/$(ricgraph_website_file)
 ricgraph_website_path := $(ricgraph_rep_download)/raw/main/$(distrib_website_file)
-
-# Note that the Ricgraph version number is also used for the website.
-ifeq ($(shell test -f $(ricgraph_dir)/README.md && echo true),true)
-	ricgraph_version := $(shell sed -n 's/.*for version \([0-9.]*\) of Ricgraph.*/\1/p' $(ricgraph_dir)/README.md)
-else
-	ricgraph_version := [not_set]
-endif
 
 
 # ########################################################################
@@ -144,6 +145,7 @@ ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
 	@echo "Get the documentation website files:"
 	cp -r $(ricgraph_dir)/docs $(source_dir)
+	mv $(source_dir)/docs/manifest.json-docs $(source_dir)/docs/manifest.json
 	@echo "Move favicon.ico."
 	mv $(source_dir)/docs/images/icons/favicon.ico $(source_dir)/docs
 	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
@@ -165,6 +167,7 @@ ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
 	@echo "Get the website files:"
 	cp -r $(ricgraph_dir)/website $(source_dir)
+	mv $(source_dir)/website/manifest.json-website $(source_dir)/website/manifest.json
 	@echo "Move favicon.ico."
 	mv $(source_dir)/website/images/icons/favicon.ico $(source_dir)/website
 	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
@@ -180,6 +183,7 @@ endif
 build_documentation_website: get_docs check_user_notroot
 	rm -rf $(build_docs_dir)
 	cd $(source_dir); cp _quarto-documentation-website.yml docs/_quarto.yml
+	@cd $(source_dir)/docs; sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
 	cd $(source_dir)/docs; quarto render
 
 
