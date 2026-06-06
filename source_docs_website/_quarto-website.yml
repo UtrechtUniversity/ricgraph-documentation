@@ -12,11 +12,7 @@
 # This file is the Quarto config file to generate the Ricgraph
 # website.
 #
-# Note that Quarto will be run in directory .../source_docs_website/website
-# (the other Quarto build options run in .../source_docs_website).
-# This is necessary to have the html files directly after the website link, 
-# like in "www.ricgraph.eu/what-is-ricgraph.hmtl" instead of
-# "www.ricgraph.eu/website/what-is-ricgraph.hmtl".
+# Quarto will be run in directory .../source_docs_website/website.
 #
 # Original version Rik D.T. Janssen, February 2025.
 #
@@ -27,7 +23,6 @@ project:
   output-dir: ../../build_website
   type: website
   render:
-    # index.html is created in the Makefile.
     - index.html
     - "*.md"
   resources:

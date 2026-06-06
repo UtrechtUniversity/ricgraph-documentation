@@ -12,23 +12,23 @@
 # This file is the Quarto config file to generate the Ricgraph
 # documentation website.
 #
+# Quarto will be run in directory .../source_docs_website/docs.
+#
 # Original version Rik D.T. Janssen, February 2025.
 #
 # ########################################################################
 
 project:
-  output-dir: ../build_documentation
+  output-dir: ../../build_documentation
   type: website
   render:
-    # index.html is created in the Makefile.
     - index.html
-    - "README.md"
-    - "docs/*.md"
-    - "docs/newsletters/*.md"
+    - "*.md"
+    - "newsletters/*.md"
   resources:
-    - "docs/images/icons/android/*"
-    - "docs/images/icons/ios/*"
-    - "docs/images/ricgraph-docs-screenshot-*"
+    - "images/icons/android/*"
+    - "images/icons/ios/*"
+    - "images/ricgraph-docs-screenshot-*"
   
 lang: en
 description-meta: "Ricgraph (Research in context graph): explore collaborations, open science, researchers, teams, research results, and (sub-)organizations with a graph"
@@ -49,7 +49,7 @@ website:
     border: false
     title: "Documentation Research in context graph"
     style: docked
-    logo: docs/images/ricgraph_logo.png
+    logo: images/ricgraph_logo.png
     logo-alt: "Ricgraph logo"
     search: true
     background: primary
@@ -57,41 +57,41 @@ website:
     pinned: true
     contents:
       - text: "Ricgraph docs intro"
-        href: docs/ricgraph_documentation_intro.md
-      - text: "Pilot Open Ricgraph demo server"
+        href: ricgraph_documentation_intro.md
+      - text: "Use Ricgraph or particpate"
         href: "https://www.ricgraph.eu/pilot-project-open-ricgraph-demo-server.html"
-      - text: "Install"
-        href: docs/ricgraph_install_configure.md
-      - text: "Harvest sources"
-        href: docs/ricgraph_harvest_scripts.md
+      - text: "Install and harvest"
+        href: ricgraph_install_configure.md
       - text: "Ricgraph Explorer: user interface"
-        href: docs/ricgraph_explorer.md
+        href: ricgraph_explorer.md
       - text: "Outreach activities"
-        href: docs/ricgraph_outreach.md
+        href: ricgraph_outreach.md
       - section: "Detailed documentation"
         contents:
           - section: "Installation options"
             contents:
-              - href: docs/ricgraph_as_server.md
-              - href: docs/ricgraph_containerized.md
+              - href: ricgraph_as_server.md
+              - href: ricgraph_containerized.md
           - section: "Graph database backends"
             contents:
               - text: "Ricgraph with Neo4j"
-                href: docs/ricgraph_backend_neo4j.md
+                href: ricgraph_backend_neo4j.md
               - text: "Ricgraph with Memgraph"
-                href: docs/ricgraph_backend_memgraph.md
+                href: ricgraph_backend_memgraph.md
+          - text: "Harvest sources"
+            href: ricgraph_harvest_scripts.md
           - text: "Use the Ricgraph REST API"
-            href: docs/ricgraph_restapi.md
+            href: ricgraph_restapi.md
           - text: "Read about details"
-            href: docs/ricgraph_details.md
+            href: ricgraph_details.md
           - text: "Run miscellaneous scripts"
-            href: docs/ricgraph_misc_scripts.md
+            href: ricgraph_misc_scripts.md
           - text: "Write Ricgraph scripts"
-            href: docs/ricgraph_script_writing.md
+            href: ricgraph_script_writing.md
           - text: "Compare Ricgraph to others"
-            href: docs/ricgraph_comparison.md
+            href: ricgraph_comparison.md
           - text: "Read about known bugs"
-            href: docs/ricgraph_known_bugs.md
+            href: ricgraph_known_bugs.md
           # The following section is necessary, because it ensures
           # that the left menubar is present when you click on one
           # of these items. Otherwise, without this, there is no way
@@ -99,24 +99,22 @@ website:
           # experience.
           - section: "Don't look here &#9786;"
             contents:
-              - text: "Readme Ricgraph"
-                href: README.md
               - text: "Table of contents"
-                href: docs/ricgraph_toc_documentation.md
+                href: ricgraph_toc_documentation.md
               - text: "Index"
-                href: docs/ricgraph_index_documentation.md
+                href: ricgraph_index_documentation.md
               - text: "REST API generated doc"
-                href: docs/ricgraph_restapi_gendoc.md
+                href: ricgraph_restapi_gendoc.md
               - text: "Newsletter April 2024"
-                href: docs/newsletters/240400-Ricgraph_newsletter_April_2024.md
+                href: newsletters/240400-Ricgraph_newsletter_April_2024.md
               - text: "Newsletter July 2024"
-                href: docs/newsletters/240700-Ricgraph_newsletter_July_2024.md
+                href: newsletters/240700-Ricgraph_newsletter_July_2024.md
               - text: "Newsletter June 2025"
-                href: docs/newsletters/250600-Ricgraph_newsletter_June_2025.md
+                href: newsletters/250600-Ricgraph_newsletter_June_2025.md
               - text: "Newsletter October 2025"
-                href: docs/newsletters/251000-Ricgraph_newsletter_Oct_2025.md
+                href: newsletters/251000-Ricgraph_newsletter_Oct_2025.md
               - text: "Newsletter March 2026"
-                href: docs/newsletters/260300-Ricgraph_newsletter_March_2026.md
+                href: newsletters/260300-Ricgraph_newsletter_March_2026.md
       - text: "Full documentation pdf"
         href: ricgraph_fulldocumentation.pdf
       - text: "Contact"
@@ -154,13 +152,13 @@ format:
   html:
     theme: 
       - cosmo
-      - ricgraph.scss
+      - ../ricgraph.scss
     toc: true
     number-sections: true
     lightbox: true
     filters:
-      - convert_scripts/renumber_sections.lua
-      - convert_scripts/set_webpage_title.lua
+      - ../convert_scripts/renumber_sections.lua
+      - ../convert_scripts/set_webpage_title.lua
     # The font used on the webpages is determined by the 'fonts.' below and 
     # a setting in ricgraph.scss.
     # Android has Progressive Web Apps, see file manifest.json.
@@ -169,7 +167,7 @@ format:
       - text: |
           <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
           <link rel='manifest' href='/manifest.json'>
-          <link rel='apple-touch-icon' sizes='76x76' href='/docs/images/icons/ios/ricgraph-icon-76x76.png'>
-          <link rel='apple-touch-icon' sizes='120x120' href='/docs/images/icons/ios/ricgraph-icon-120x120.png'>
-          <link rel='apple-touch-icon' sizes='152x152' href='/docs/images/icons/ios/ricgraph-icon-152x152.png'>
-          <link rel='apple-touch-icon' sizes='180x180' href='/docs/images/icons/ios/ricgraph-icon-180x180.png'>
+          <link rel='apple-touch-icon' sizes='76x76' href='/images/icons/ios/ricgraph-icon-76x76.png'>
+          <link rel='apple-touch-icon' sizes='120x120' href='/images/icons/ios/ricgraph-icon-120x120.png'>
+          <link rel='apple-touch-icon' sizes='152x152' href='/images/icons/ios/ricgraph-icon-152x152.png'>
+          <link rel='apple-touch-icon' sizes='180x180' href='/images/icons/ios/ricgraph-icon-180x180.png'>

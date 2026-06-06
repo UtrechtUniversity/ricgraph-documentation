@@ -39,13 +39,6 @@ distrib_docs_dir := distrib_documentation
 build_website_dir := build_website
 distrib_website_dir := distrib_website
 
-# Note that the Ricgraph version number is also used for the website.
-ifeq ($(shell test -f $(source_dir)/README.md && echo true),true)
-	ricgraph_version := $(shell sed -n 's/.*for version \([0-9.]*\) of Ricgraph.*/\1/p' $(source_dir)/README.md)
-else
-	ricgraph_version := [not_set]
-endif
-
 ricgraph_rep_download := https://github.com/UtrechtUniversity/ricgraph-documentation
 # 'ricgraph_dir' should be done differently. It is relative to the directory
 # of this Makefile.
@@ -58,6 +51,13 @@ ricgraph_docs_path := $(ricgraph_rep_download)/raw/main/$(distrib_docs_file)
 ricgraph_website_file := ricgraph_website-v$(ricgraph_version).tar.gz
 distrib_website_file := $(distrib_website_dir)/$(ricgraph_website_file)
 ricgraph_website_path := $(ricgraph_rep_download)/raw/main/$(distrib_website_file)
+
+# Note that the Ricgraph version number is also used for the website.
+ifeq ($(shell test -f $(ricgraph_dir)/README.md && echo true),true)
+	ricgraph_version := $(shell sed -n 's/.*for version \([0-9.]*\) of Ricgraph.*/\1/p' $(ricgraph_dir)/README.md)
+else
+	ricgraph_version := [not_set]
+endif
 
 
 # ########################################################################
@@ -138,23 +138,25 @@ makefile_variables:
 # Note that it only works when given as above order.
 
 
+# Note the similarity with get_website.
 get_docs: check_user_notroot
 ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
-	@echo "Get the documentation files:"
+	@echo "Get the documentation website files:"
 	cp -r $(ricgraph_dir)/docs $(source_dir)
-	cp $(ricgraph_dir)/README.md $(source_dir)
-	cp $(ricgraph_dir)/manifest.json-docswebsite $(source_dir)/manifest.json
 	@echo "Move favicon.ico."
-	mv $(source_dir)/docs/images/icons/favicon.ico $(source_dir)
+	mv $(source_dir)/docs/images/icons/favicon.ico $(source_dir)/docs
 	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
-	@for file in ${source_dir}/README.md ${source_dir}/docs/*.md; do \
+	@for file in ${source_dir}/docs/*.md; do \
     		sed -i -E 's/<img\s+alt="([^"]*)"\s+src="([^"]*)"\s+width="([^"]*)%">/  ![\1](\2){width=\3%}/g' "$$file"; \
     		sed -i -E 's/<img\s+src="([^"]*)"\s+alt="([^"]*)"\s+width="([^"]*)%">/  ![\2](\1){width=\3%}/g' "$$file"; \
     		sed -i -E 's/<img\s+src="([^"]*)"\s+width="([^"]*)%">/  ![](\1){width=\2%}/g' "$$file"; \
 	done
-	@echo "Remove the badges and logo from the README.md file."
-	@sed -i '1,/<!--- Mark to remove everything up to here --->/d' $(source_dir)/README.md
+	@cd ${source_dir}/docs; \
+	for file in ricgraph_toc_documentation.md ricgraph_index_documentation.md; do \
+    		sed -i -E 's_\.\./docs/__' "$$file"; \
+    		sed -i -E '/README/d' "$$file"; \
+	done
 endif
 
 
@@ -163,7 +165,6 @@ ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
 	@echo "Get the website files:"
 	cp -r $(ricgraph_dir)/website $(source_dir)
-	mv $(source_dir)/website/manifest.json-website $(source_dir)/website/manifest.json
 	@echo "Move favicon.ico."
 	mv $(source_dir)/website/images/icons/favicon.ico $(source_dir)/website
 	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
@@ -175,20 +176,11 @@ ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 endif
 
 
+# Note the similarity with build_website.
 build_documentation_website: get_docs check_user_notroot
 	rm -rf $(build_docs_dir)
-	@cd $(source_dir); \
-	echo "<html xmlns='http://www.w3.org/1999/xhtml'>" > index.html; \
-  	echo "  <head>" >> index.html; \
-  	echo "    <title>Redirect to ricgraph_documentation_intro.html</title>" >> index.html; \
-    echo "    <meta http-equiv='refresh' content='0;URL=docs/ricgraph_documentation_intro.html' />" >> index.html; \
-  	echo "  </head>" >> index.html; \
-  	echo "  <body>" >> index.html; \
-  	echo "  </body>" >> index.html; \
-	echo "</html>" >> index.html
-	cd $(source_dir); cp _quarto-documentation-website.yml _quarto.yml
-	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
-	cd $(source_dir); quarto render
+	cd $(source_dir); cp _quarto-documentation-website.yml docs/_quarto.yml
+	cd $(source_dir)/docs; quarto render
 
 
 # [25-2-2025] we cannot put 'getdocs' in the dependencies of this target.
@@ -212,13 +204,10 @@ build_documentation_website: get_docs check_user_notroot
 build_fulldoc_pdf: check_user_notroot
 	@if [ ! -d $(source_dir)/docs ]; then echo "Error, docs-dir does not exist, run 'make get_docs' first."; exit 1; fi
 	rm -f $(build_docs_dir)/ricgraph_fulldocumentation.pdf
-	cd $(source_dir); cp _quarto-fulldocumentation.yml _quarto.yml
-	@cd $(source_dir); sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
-	#cd $(source_dir); cp docs/ricgraph_tutorial.md index.md
-	cd $(source_dir); cp README.md index.md
-	@cd $(source_dir); \
-	sed -i 's|(ricgraph_|(docs/ricgraph_|g' index.md; \
-	sed -i 's|(images/|(docs/images/|g' index.md; \
+	cd $(source_dir); cp _quarto-fulldocumentation.yml docs/_quarto.yml
+	cd $(source_dir)/docs; sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
+	cd $(source_dir)/docs; cp ricgraph_documentation_intro.md index.md
+	@cd $(source_dir)/docs; \
 	echo "" >> index.md; \
 	echo "<!-- Produce table of contents. To be able to use" >> index.md; \
 	echo "LaTeX, you need 'raw_tex: true' in _quarto.yml. -->" >> index.md;\
@@ -227,20 +216,11 @@ build_fulldoc_pdf: check_user_notroot
 	echo "" >> index.md; \
 	echo '\part*{Full documentation Ricgraph}' >> index.md; \
 	echo "" >> index.md
-	cd $(source_dir); quarto render --output ricgraph_fulldocumentation.pdf
+	cd $(source_dir)/docs; quarto render --output ricgraph_fulldocumentation.pdf
 
 
 build_website: get_website check_user_notroot
 	rm -rf $(build_website_dir)
-	@cd $(source_dir)/website; \
-	echo "<html xmlns='http://www.w3.org/1999/xhtml'>" > index.html; \
-  	echo "  <head>" >> index.html; \
-    echo "    <title>Redirect to what-is-ricgraph.html</title>" >> index.html; \
-    echo "    <meta http-equiv='refresh' content='0;URL=what-is-ricgraph.html' />" >> index.html; \
-  	echo "  </head>" >> index.html; \
-  	echo "  <body>" >> index.html; \
-  	echo "  </body>" >> index.html; \
-	echo "</html>" >> index.html
 	cd $(source_dir); cp _quarto-website.yml website/_quarto.yml
 	cd $(source_dir)/website; quarto render
 
@@ -356,9 +336,6 @@ install_website: check_user_root
 
 veryclean: check_user_notroot
 	rm -rf $(source_dir)/docs $(build_docs_dir) $(distrib_docs_dir)
-	rm -f $(source_dir)/README.md $(source_dir)/_quarto.yml
-	rm -f $(source_dir)/index.* $(source_dir)/favicon.ico
-	rm -f $(source_dir)/manifest.json
 	rm -rf $(source_dir)/website $(build_website_dir) $(distrib_website_dir)
 
 
