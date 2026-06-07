@@ -119,11 +119,12 @@ a {
 }
 /* End of Underline links if they are hovered */
 
-/* External link icon, only for the main text (not the sidebar). */
+/* External link icon, only for the main text (not the sidebar), */
+/* and only if the link is of class "external-link". */
 /* That is why we need the "main.content". */
 /* width & height: size of the icon; margin-left: space between */
 /* link and icon; transform: height of icon above baseline. */
-main.content a[href^="https"]::after {
+main.content a.external-link::after {
   content: "";
   display: inline-block;
   width: 0.55em;

@@ -36,7 +36,7 @@ author-meta: "Rik D.T. Janssen"
 # Don't do keywords, they seem to be ignored by all major search engines.
 # keywords:
 #  - "Research in context graph"
-# [etc].
+# [etc.].
 
 website:
   # The page title is created with 'set_webpage_title.lua' below from the
@@ -141,12 +141,11 @@ website:
           in context graph.
           For more information about Ricgraph, Ricgraph Explorer, and the
           Ricgraph REST API, please read the reference publication 
-          <a href="https://doi.org/10.1016/j.softx.2024.101736">
-          https://doi.org/10.1016/j.softx.2024.101736</a>, visit the website 
+          <a href="https://doi.org/10.1016/j.softx.2024.101736">https://doi.org/10.1016/j.softx.2024.101736</a>, 
+          visit the website 
           <a href=https://www.ricgraph.eu>www.ricgraph.eu</a>, 
-          or go to the GitHub
-          repository <a href=https://github.com/UtrechtUniversity/ricgraph>
-          https://github.com/UtrechtUniversity/ricgraph</a>. 
+          or go to the GitHub repository 
+          <a href=https://github.com/UtrechtUniversity/ricgraph>https://github.com/UtrechtUniversity/ricgraph</a>. 
 
 format:
   html:

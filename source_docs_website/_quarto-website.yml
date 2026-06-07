@@ -36,7 +36,7 @@ author-meta: "Rik D.T. Janssen"
 # Don't do keywords, they seem to be ignored by all major search engines.
 # keywords:
 #  - "Research in context graph"
-# [etc].
+# [etc.].
 
 website:
   # The page title is created with 'set_webpage_title.lua' below from the
@@ -94,12 +94,9 @@ website:
     left:
       - text: >
           You are visiting one of the Ricgraph websites 
-          <a href="https://www.ricgraph.eu">
-          www.ricgraph.eu</a>,
-          <a href="https://www.ricgraph.nl">
-          www.ricgraph.nl</a>, or
-          <a href="https://www.ricgraph.com">
-          www.ricgraph.com</a>.
+          <a href="https://www.ricgraph.eu">www.ricgraph.eu</a>,
+          <a href="https://www.ricgraph.nl">www.ricgraph.nl</a>, or
+          <a href="https://www.ricgraph.com">www.ricgraph.com</a>.
 
 format:
   html:

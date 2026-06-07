@@ -145,7 +145,6 @@ ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
 	@echo "Get the documentation website files:"
 	cp -r $(ricgraph_dir)/docs $(source_dir)
-	mv $(source_dir)/docs/manifest.json-docs $(source_dir)/docs/manifest.json
 	@echo "Move favicon.ico."
 	mv $(source_dir)/docs/images/icons/favicon.ico $(source_dir)/docs
 	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
@@ -154,6 +153,7 @@ ifeq ($(shell test ! -d $(source_dir)/docs && echo true),true)
     		sed -i -E 's/<img\s+src="([^"]*)"\s+alt="([^"]*)"\s+width="([^"]*)%">/  ![\2](\1){width=\3%}/g' "$$file"; \
     		sed -i -E 's/<img\s+src="([^"]*)"\s+width="([^"]*)%">/  ![](\1){width=\2%}/g' "$$file"; \
 	done
+	@echo 'Modifying index and table of contents files.'
 	@cd ${source_dir}/docs; \
 	for file in ricgraph_toc_documentation.md ricgraph_index_documentation.md; do \
     		sed -i -E 's_\.\./docs/__' "$$file"; \
@@ -167,7 +167,6 @@ ifeq ($(shell test ! -d $(source_dir)/website && echo true),true)
 	@if [ ! -d $(ricgraph_dir) ]; then echo "Error, Ricgraph directory '$(ricgraph_dir)' does not exist."; exit 1; fi
 	@echo "Get the website files:"
 	cp -r $(ricgraph_dir)/website $(source_dir)
-	mv $(source_dir)/website/manifest.json-website $(source_dir)/website/manifest.json
 	@echo "Move favicon.ico."
 	mv $(source_dir)/website/images/icons/favicon.ico $(source_dir)/website
 	@echo 'Modifying HTML <img ..> tags to Markdown ![]() links.'
@@ -185,6 +184,16 @@ build_documentation_website: get_docs check_user_notroot
 	cd $(source_dir); cp _quarto-documentation-website.yml docs/_quarto.yml
 	@cd $(source_dir)/docs; sed -i "s/#XX.YY#/${ricgraph_version}/" _quarto.yml
 	cd $(source_dir)/docs; quarto render
+	@echo 'Marking all external links with a special "class",'
+	@echo 'target="_blank" to external links that do not have it.'
+	@# We need two seds: one to remove the target="_blank" if it is
+	@# there, one to add it. Otherwise the sed becomes too complicated.
+	@for file in ${build_docs_dir}/*.html; do \
+    		sed -i -E 's/<a([[:space:]][^>]*href="https:[^"]*"[^>]*)>/<a class="external-link"\1>/g' "$$file"; \
+    		sed -i -E 's/(<a[^>]*class="external-link"[^>]*)target="_blank"[[:space:]]*([^>]*>)/\1\2/g' "$$file"; \
+    		sed -i -E 's/(<a[^>]*class="external-link"[^>]*)>/\1 target="_blank">/g' "$$file"; \
+	done
+	@echo 'Done.'
 
 
 # [25-2-2025] we cannot put 'getdocs' in the dependencies of this target.
@@ -227,6 +236,16 @@ build_website: get_website check_user_notroot
 	rm -rf $(build_website_dir)
 	cd $(source_dir); cp _quarto-website.yml website/_quarto.yml
 	cd $(source_dir)/website; quarto render
+	@echo 'Marking all external links with a special "class",'
+	@echo 'target="_blank" to external links that do not have it.'
+	@# We need two seds: one to remove the target="_blank" if it is
+	@# there, one to add it. Otherwise the sed becomes too complicated.
+	@for file in ${build_website_dir}/*.html; do \
+    		sed -i -E 's/<a([[:space:]][^>]*href="https:[^"]*"[^>]*)>/<a class="external-link"\1>/g' "$$file"; \
+    		sed -i -E 's/(<a[^>]*class="external-link"[^>]*)target="_blank"[[:space:]]*([^>]*>)/\1\2/g' "$$file"; \
+    		sed -i -E 's/(<a[^>]*class="external-link"[^>]*)>/\1 target="_blank">/g' "$$file"; \
+	done
+	@echo 'Done.'
 
 
 create_distrib_documentation:
