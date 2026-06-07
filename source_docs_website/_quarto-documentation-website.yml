@@ -42,6 +42,8 @@ website:
   # The page title is created with 'set_webpage_title.lua' below from the
   # <h1> header of the page. The following text will be appended to it.
   title: "Research in context graph"
+  site-url: "https://docs.ricgraph.eu"
+  site-path: "/"
   favicon: favicon.ico
   search: true
   back-to-top-navigation: true
