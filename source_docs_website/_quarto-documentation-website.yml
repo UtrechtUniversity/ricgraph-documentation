@@ -68,6 +68,8 @@ website:
         href: ricgraph_explorer.md
       - text: "Outreach activities"
         href: ricgraph_outreach.md
+      - text: "Contact"
+        href: "https://www.ricgraph.eu/contact.html"
       - section: "Detailed documentation"
         contents:
           - section: "Installation options"
@@ -119,8 +121,6 @@ website:
                 href: newsletters/260300-Ricgraph_newsletter_March_2026.md
       - text: "Full documentation pdf"
         href: ricgraph_fulldocumentation.pdf
-      - text: "Contact"
-        href: "https://www.ricgraph.eu/contact.html"
     footer: >
           [![DOI Ricgraph software](https://img.shields.io/badge/software-10.5281/zenodo.7524314-blue?logo=doi&logoColor=fff)](https://doi.org/10.5281/zenodo.7524314)
           [![DOI reference Ricgraph publication](https://img.shields.io/badge/publication-10.1016%2Fj.softx.2024.101736-blue?logo=doi&logoColor=fff)](https://doi.org/10.1016/j.softx.2024.101736)
