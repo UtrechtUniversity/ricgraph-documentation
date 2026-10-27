@@ -74,6 +74,8 @@ website:
         contents:
           - section: "Installation options"
             contents:
+              - text: "Install and harvest"
+                href: ricgraph_install_configure.md
               - href: ricgraph_as_server.md
               - href: ricgraph_containerized.md
           - section: "Graph database backends"
