@@ -68,6 +68,8 @@ website:
           href: open-science-with-ricgraph.md
         - text: "Enhancing with Ricgraph"
           href: enhancing-with-ricgraph.md
+        - text: "Ricgraph as open science infrastructure"
+          href: ricgraph-open-science-infrastructure.md
       - section: "Use or participate"
         contents:
         - text: "Pilot Open Ricgraph demo server"
