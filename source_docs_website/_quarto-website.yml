@@ -14,7 +14,7 @@
 #
 # Quarto will be run in directory .../source_docs_website/website.
 #
-# Original version Rik D.T. Janssen, February 2025.
+# Original version Rik D.T. Janssen, February 2025, November 2026.
 #
 # ########################################################################
 
@@ -29,7 +29,8 @@ project:
     - "images/icons/android/*"
     - "images/icons/ios/*"
     - "images/ricgraph-website-screenshot-*"
-  
+    - "what-is-ricgraph.html"
+
 lang: en
 description-meta: "Ricgraph (Research in context graph): explore collaborations, open science, researchers, teams, research results, and (sub-)organizations with a graph"
 author-meta: "Rik D.T. Janssen"
@@ -53,13 +54,14 @@ website:
     style: docked
     logo: images/ricgraph_logo.png
     logo-alt: "Ricgraph logo"
+    logo-href: "/"
     search: true
     background: primary
     collapse-level: 2
     pinned: true
     contents:
       - text: "What is Ricgraph?"
-        href: what-is-ricgraph.md
+        href: index.md
       - section: "Ricgraph's uniqueness"
         contents:
         - text: "Collaborations with Ricgraph"
@@ -78,6 +80,8 @@ website:
         href: ricgraph-news.md
       - text: "Learn more"
         href: learn-more-about-ricgraph.md
+      - text: "Documentation"
+        href: "https://docs.ricgraph.eu"
       - text: "Contact"
         href: contact.md
     footer: >
@@ -104,7 +108,8 @@ website:
 
 format:
   html:
-    theme: 
+    canonical-url: true
+    theme:
       - cosmo
       - ../ricgraph.scss
     toc: true
@@ -123,3 +128,13 @@ format:
           <link rel='apple-touch-icon' sizes='120x120' href='/images/icons/ios/ricgraph-icon-120x120.png'>
           <link rel='apple-touch-icon' sizes='152x152' href='/images/icons/ios/ricgraph-icon-152x152.png'>
           <link rel='apple-touch-icon' sizes='180x180' href='/images/icons/ios/ricgraph-icon-180x180.png'>
+          <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Ricgraph",
+            "alternateName": "Research in context graph",
+            "url": "https://www.ricgraph.eu/"
+          }
+          </script>
+
