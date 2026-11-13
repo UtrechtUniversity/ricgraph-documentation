@@ -64,17 +64,17 @@ website:
         href: index.md
       - section: "Ricgraph's uniqueness"
         contents:
-        - text: "Collaborations with Ricgraph"
+        - text: "Explore collaborations"
           href: collaborations-with-ricgraph.md
-        - text: "Open science with Ricgraph"
+        - text: "Explore open science"
           href: open-science-with-ricgraph.md
-        - text: "Enhancing with Ricgraph"
+        - text: "Enhance research information"
           href: enhancing-with-ricgraph.md
-        - text: "Ricgraph as open science infrastructure"
+        - text: "Open science infrastructure"
           href: ricgraph-open-science-infrastructure-for-research-information.md
       - section: "Use or participate"
         contents:
-        - text: "Pilot Open Ricgraph demo server"
+        - text: "Open Ricgraph demo server"
           href: pilot-project-open-ricgraph-demo-server.md
       - text: "Ricgraph news"
         href: ricgraph-news.md
